@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testo-Investo | Finanzielle Bildung & Investment-Beratung</title>
+  <meta name="description" content="Testo-Investo begleitet dich mit klaren Analysen und verständlicher Finanzbildung auf dem Weg zu smarten Investment-Entscheidungen.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="#top" class="logo">Testo<span>Investo</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Fundierte Finanzbildung. Klare Investment-Entscheidungen.</h1>
+        <p>Testo-Investo bringt dir Kapitalmärkte, Anlagestrategien und Risikomanagement verständlich näher – ohne Fachchinesisch.</p>
+        <a href="#kontakt" class="btn-primary">Kostenloses Erstgespräch</a>
+      </div>
+    </section>
+
+    <section id="leistungen" class="section leistungen">
+      <h2>Unsere Leistungen</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Finanzbildung</h3>
+          <p>Grundlagenwissen zu Aktien, ETFs und Anlagestrategien – verständlich aufbereitet für Einsteiger und Fortgeschrittene.</p>
+        </div>
+        <div class="card">
+          <h3>Portfolio-Analyse</h3>
+          <p>Wir werfen einen unabhängigen Blick auf dein bestehendes Portfolio und zeigen Optimierungspotenzial auf.</p>
+        </div>
+        <div class="card">
+          <h3>Individuelle Beratung</h3>
+          <p>Persönliche Gespräche zu deiner Anlagestrategie, abgestimmt auf deine Ziele und dein Risikoprofil.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ueber-uns" class="section ueber-uns">
+      <h2>Über uns</h2>
+      <p>Testo-Investo wurde gegründet, um Finanzwissen zugänglich zu machen. Wir glauben, dass fundierte Entscheidungen am Kapitalmarkt kein Privileg von Experten sein sollten, sondern jedem offenstehen – mit den richtigen Werkzeugen und verständlichen Erklärungen.</p>
+    </section>
+
+    <section id="kontakt" class="section kontakt">
+      <h2>Kontakt</h2>
+      <p>Hast du Fragen oder möchtest ein Gespräch vereinbaren? Schreib uns eine Nachricht.</p>
+      <form id="contactForm" class="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Nachricht</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit" class="btn-primary">Nachricht senden</button>
+        <p id="formStatus" class="form-status" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Testo-Investo. Alle Angaben ohne Gewähr, keine Anlageberatung im rechtlichen Sinne.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
