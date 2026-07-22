@@ -18,8 +18,24 @@ navLinks.querySelectorAll("a").forEach((link) => {
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 
-contactForm.addEventListener("submit", (event) => {
+contactForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  formStatus.textContent = "Danke für deine Nachricht! Wir melden uns in Kürze.";
-  contactForm.reset();
+  formStatus.textContent = "Wird gesendet …";
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: new FormData(contactForm),
+      headers: { Accept: "application/json" },
+    });
+
+    if (response.ok) {
+      formStatus.textContent = "Danke für deine Nachricht! Wir melden uns in Kürze.";
+      contactForm.reset();
+    } else {
+      formStatus.textContent = "Da ist etwas schiefgelaufen. Bitte versuch es später erneut.";
+    }
+  } catch (error) {
+    formStatus.textContent = "Da ist etwas schiefgelaufen. Bitte versuch es später erneut.";
+  }
 });
