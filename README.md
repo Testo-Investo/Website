@@ -1,6 +1,8 @@
 # Testo-Investo Website
 
-Statische Landingpage (HTML/CSS/JS, kein Build-Prozess nötig).
+Statische Seite (HTML/CSS/JS, kein Build-Prozess nötig) im Look eines
+Social-/Investoren-Profil-Feeds: dunkles Theme, Bitcoin-Gold-Akzente,
+Comic-Bildsprache aus Gym- und Krypto-Motiven.
 
 ## Lokal ansehen
 
@@ -10,11 +12,12 @@ python3 -m http.server 8000
 
 Danach `http://localhost:8000` im Browser öffnen.
 
-## Kontaktformular (Formspree)
+## Bilder
 
-Das Formular sendet Anfragen über [Formspree](https://formspree.io/) an `skwurst@gmx.de`.
-Beim allerersten Absenden schickt Formspree eine Bestätigungs-E-Mail an diese Adresse –
-erst nach Bestätigung werden weitere Nachrichten zugestellt.
+Alle Illustrationen liegen in `assets/images/` und stammen aus dem
+Google Drive des Nutzers (KI-generierte Bodybuilder-/Krypto-Motive).
+Weitere Bilder können dort einfach ergänzt und in `index.html`
+referenziert werden.
 
 ## Hosting mit GitHub Pages
 

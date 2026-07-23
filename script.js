@@ -1,41 +1,47 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const navToggle = document.getElementById("navToggle");
-const navLinks = document.getElementById("navLinks");
+const mainNav = document.getElementById("mainNav");
 
 navToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
+  const isOpen = mainNav.classList.toggle("open");
   navToggle.setAttribute("aria-expanded", isOpen);
 });
 
-navLinks.querySelectorAll("a").forEach((link) => {
+mainNav.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
+    mainNav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
   });
 });
 
-const contactForm = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
+document.querySelectorAll(".more-toggle").forEach((button) => {
+  button.addEventListener("click", () => {
+    const text = button.previousElementSibling;
+    const expanded = text.classList.toggle("expanded");
+    text.classList.toggle("collapsed", !expanded);
+    button.textContent = expanded ? "Weniger anzeigen" : "Mehr anzeigen";
+  });
+});
 
-contactForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  formStatus.textContent = "Wird gesendet …";
+document.querySelectorAll(".replies-toggle").forEach((button) => {
+  const originalLabel = button.textContent;
+  button.addEventListener("click", () => {
+    const isShown = button.dataset.shown === "true";
+    button.dataset.shown = String(!isShown);
+    button.textContent = isShown ? originalLabel : "Antworten ausblenden";
+  });
+});
 
-  try {
-    const response = await fetch(contactForm.action, {
-      method: "POST",
-      body: new FormData(contactForm),
-      headers: { Accept: "application/json" },
-    });
-
-    if (response.ok) {
-      formStatus.textContent = "Danke für deine Nachricht! Wir melden uns in Kürze.";
-      contactForm.reset();
-    } else {
-      formStatus.textContent = "Da ist etwas schiefgelaufen. Bitte versuch es später erneut.";
-    }
-  } catch (error) {
-    formStatus.textContent = "Da ist etwas schiefgelaufen. Bitte versuch es später erneut.";
-  }
+document.querySelectorAll(".comment-input").forEach((form) => {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const input = form.querySelector("input");
+    if (!input.value.trim()) return;
+    input.value = "";
+    input.placeholder = "Kommentar gesendet ✔️";
+    setTimeout(() => {
+      input.placeholder = "Schreib einen Kommentar …";
+    }, 2000);
+  });
 });
