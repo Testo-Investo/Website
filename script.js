@@ -55,6 +55,20 @@ document.getElementById("timeline").innerHTML = site.timeline
   )
   .join("");
 
+/* ---------- Competitions ---------- */
+document.getElementById("comps").innerHTML = site.competitions
+  .map(
+    (c, i) => `
+    <li class="comp reveal" style="transition-delay:${i * 80}ms">
+      <span class="comp-no">${String(i + 1).padStart(2, "0")}</span>
+      <span class="comp-year">${escapeHtml(c.year)}</span>
+      <strong class="comp-name">${escapeHtml(c.name)}</strong>
+      <span class="comp-div">${escapeHtml(c.division)}</span>
+      <span class="comp-place">Platz ${escapeHtml(c.place)}</span>
+    </li>`
+  )
+  .join("");
+
 /* ---------- Before / After ---------- */
 const { before, after } = site.comparison;
 document.getElementById("compareBefore").innerHTML =
@@ -147,18 +161,18 @@ lightbox.addEventListener("touchend", (e) => {
 });
 
 /* ---------- Lifts ---------- */
-const maxLift = Math.max(...site.lifts.map((l) => l.now));
-document.getElementById("lifts").innerHTML = site.lifts
-  .map(
-    (l) => `
+const liftCard = (name, start, now, max, unit = "kg") => `
     <article class="lift reveal">
-      <h3>${escapeHtml(l.name)}</h3>
-      <div class="lift-now">${l.now}<small>kg</small></div>
-      <div class="lift-bar"><i style="--w:${(l.now / maxLift) * 100}%"></i></div>
-      <div class="lift-delta"><span>Start: ${l.start} kg</span><b>+${l.now - l.start} kg</b></div>
-    </article>`
-  )
-  .join("");
+      <h3>${escapeHtml(name)}</h3>
+      <div class="lift-now">${now}<small>${unit}</small></div>
+      <div class="lift-bar"><i style="--w:${(now / max) * 100}%"></i></div>
+      <div class="lift-delta"><span>Start: ${start} ${unit}</span><b>+${now - start} ${unit}</b></div>
+    </article>`;
+
+const maxLift = Math.max(0, ...site.lifts.map((l) => l.now));
+document.getElementById("lifts").innerHTML =
+  liftCard("Körpergewicht", site.weight.start, site.weight.now, site.weight.now) +
+  site.lifts.map((l) => liftCard(l.name, l.start, l.now, maxLift)).join("");
 
 /* ---------- Contact ---------- */
 const links = [];

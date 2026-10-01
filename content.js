@@ -11,105 +11,101 @@
  *    3. Speichern, committen, pushen – fertig.
  *
  *  Steht bei "src" null, zeigt die Seite automatisch einen Platzhalter.
- *  Alle Texte mit [Platzhalter] bitte durch deine eigenen ersetzen.
+ *  Alles mit [Platzhalter] bzw. "20??" wird noch durch echte Daten ersetzt.
  */
 
 window.SITE = {
   profile: {
     name: "Testo",
     title: "Iron Journey",
-    tagline: "Kein Shortcut. Nur Jahre voller Sätze, Wiederholungen und Disziplin.",
-    startYear: 2019,
+    tagline: "22 Jahre. 45 Kilo mehr. Null Abkürzungen – nur Eisen, Reis mit Hähnchen und eine Engelsgeduld.",
+    startYear: 2004,
     heroImage: null, // z. B. "assets/progress/hero.jpg"
     instagram: "", // z. B. "https://instagram.com/deinname"
     email: "", // z. B. "kontakt@example.de"
   },
 
   // Kennzahlen im Hero-Bereich. "value" muss eine Zahl sein.
+  // Trainingseinheiten: 22 Jahre × ~52 Wochen × ~4 Einheiten ≈ 4.500
   stats: [
-    { value: 7, suffix: "", label: "Jahre im Training" },
-    { value: 18, suffix: " kg", label: "Muskelmasse aufgebaut" },
-    { value: 1500, suffix: "+", label: "Trainingseinheiten" },
-    { value: 3, suffix: "", label: "Wettkämpfe" },
+    { value: 22, suffix: "", label: "Jahre am Eisen" },
+    { value: 45, suffix: " kg", label: "aufgebaut (70 → 115 kg)" },
+    { value: 4500, suffix: "+", label: "Trainingseinheiten" },
+    { value: 5, suffix: "", label: "Wettkämpfe" },
   ],
 
-  // Bestleistungen (Kraftwerte)
-  lifts: [
-    { name: "Bankdrücken", start: 70, now: 150 },
-    { name: "Kniebeuge", start: 80, now: 200 },
-    { name: "Kreuzheben", start: 100, now: 240 },
-  ],
+  // Körpergewicht: Start und heute
+  weight: { start: 70, now: 115 },
 
-  // Deine Geschichte – ein Eintrag pro Jahr / Meilenstein
+  // Bestleistungen (Kraftwerte) – erscheinen erst, wenn hier Einträge stehen. Beispiel:
+  // { name: "Bankdrücken", start: 60, now: 180 },
+  lifts: [],
+
+  // Deine Geschichte – Meilensteine (müssen nicht jedes Jahr sein)
   timeline: [
     {
-      year: "2019",
-      title: "Der erste Schritt",
-      text: "[Platzhalter] Wie alles anfing: das erste Probetraining, kaum Plan, aber viel Motivation. Was war dein Auslöser?",
+      year: "2004",
+      title: "Tag 1 mit 70 Kilo",
+      text: "Zum ersten Mal ins Studio. Die Hanteln waren schwerer als gedacht, das Ego auch. Aber irgendwas hat an diesem Tag Klick gemacht – und es hat nie wieder aufgehört.",
       image: null,
     },
     {
-      year: "2020",
-      title: "Training zu Hause",
-      text: "[Platzhalter] Gyms zu – Kurzhanteln im Keller. Hier hast du gelernt, dranzubleiben, wenn es unbequem wird.",
+      year: "20??",
+      title: "Lehrjahre",
+      text: "[Platzhalter] Erst Training, dann verstehen: Ernährung, Regeneration, Trainingsplan. Und die Erkenntnis, dass sechs Mahlzeiten am Tag mehr Arbeit sind als jedes Beintraining.",
       image: null,
     },
     {
-      year: "2021",
-      title: "Ernährung verstanden",
-      text: "[Platzhalter] Erster richtiger Bulk, Kalorien tracken, Meal-Prep. Der Moment, ab dem es sichtbar vorwärts ging.",
+      year: "20??",
+      title: "Die erste Bühne",
+      text: "[Platzhalter] Wettkampf Nr. 1. Peak Week, Bräunungsfarbe, zitternde Knie – und der Moment, in dem sich alles gelohnt hat.",
       image: null,
     },
     {
-      year: "2022",
-      title: "Erste Diät",
-      text: "[Platzhalter] Definitionsphase, Disziplin auf dem nächsten Level. Was hast du über dich gelernt?",
+      year: "20??",
+      title: "Rückschläge gehören dazu",
+      text: "[Platzhalter] Verletzung, Pause oder einfach das Leben dazwischen? Auch das ist Teil der Reise – entscheidend ist, wieder unter die Stange zu gehen.",
       image: null,
     },
     {
-      year: "2023",
-      title: "Rückschlag & Comeback",
-      text: "[Platzhalter] Verletzung, Pause oder Motivationsloch? Hier ist Platz für die ehrliche Seite der Reise.",
-      image: null,
-    },
-    {
-      year: "2024",
-      title: "Die Bühne",
-      text: "[Platzhalter] Erster Wettkampf oder Shooting – Posing, Peak Week, Gänsehaut.",
-      image: null,
-    },
-    {
-      year: "2025",
-      title: "Neues Level",
-      text: "[Platzhalter] Neue Bestleistungen, neue Ziele. Was hat sich im Kopf verändert?",
+      year: "20??",
+      title: "Fünf Mal auf der Bühne",
+      text: "[Platzhalter] Mit jedem Wettkampf ein Stück besser: mehr Masse, mehr Härte, besseres Posing. Fünf Starts, unzählige Lektionen.",
       image: null,
     },
     {
       year: "2026",
-      title: "Heute",
-      text: "[Platzhalter] Wo du jetzt stehst und wo die Reise noch hingehen soll.",
+      title: "Topform mit 115 Kilo",
+      text: "22 Jahre später: 45 Kilo mehr auf den Rippen und die beste Form meines Lebens. Der Tank ist voll, die Hosen sind zu eng – und die Reise ist noch lange nicht vorbei.",
       image: null,
     },
   ],
 
+  // Wettkämpfe – [Platzhalter], bitte Jahr, Name, Klasse und Platzierung eintragen
+  competitions: [
+    { year: "20??", name: "Wettkampf 1", division: "Klasse folgt", place: "?" },
+    { year: "20??", name: "Wettkampf 2", division: "Klasse folgt", place: "?" },
+    { year: "20??", name: "Wettkampf 3", division: "Klasse folgt", place: "?" },
+    { year: "20??", name: "Wettkampf 4", division: "Klasse folgt", place: "?" },
+    { year: "20??", name: "Wettkampf 5", division: "Klasse folgt", place: "?" },
+  ],
+
   // Vorher / Nachher-Vergleich (Schieberegler)
   comparison: {
-    before: { src: null, label: "2019" },
-    after: { src: null, label: "2026" },
+    before: { src: null, label: "2004 · 70 kg" },
+    after: { src: null, label: "2026 · 115 kg" },
   },
 
   // Progress-Galerie – neueste Bilder ganz oben eintragen.
   // date: "JJJJ-MM"   tag: frei wählbar (z. B. Aufbau, Diät, Wettkampf, Shooting)
   gallery: [
-    { src: null, date: "2026-09", caption: "Front Relaxed", tag: "Aufbau" },
+    { src: null, date: "2026-09", caption: "Topform", tag: "Aufbau" },
     { src: null, date: "2026-06", caption: "Back Double Biceps", tag: "Aufbau" },
     { src: null, date: "2025-11", caption: "Side Chest", tag: "Diät" },
-    { src: null, date: "2025-04", caption: "Off-Season", tag: "Aufbau" },
-    { src: null, date: "2024-10", caption: "Bühne", tag: "Wettkampf" },
-    { src: null, date: "2024-03", caption: "Peak Week", tag: "Diät" },
-    { src: null, date: "2023-08", caption: "Comeback", tag: "Aufbau" },
-    { src: null, date: "2022-05", caption: "Erste Diät", tag: "Diät" },
-    { src: null, date: "2021-02", caption: "Bulk", tag: "Aufbau" },
-    { src: null, date: "2019-09", caption: "Tag 1", tag: "Start" },
+    { src: null, date: "2024-05", caption: "Off-Season", tag: "Aufbau" },
+    { src: null, date: "2020-10", caption: "Bühne", tag: "Wettkampf" },
+    { src: null, date: "2015-04", caption: "Peak Week", tag: "Diät" },
+    { src: null, date: "2010-08", caption: "Masse-Phase", tag: "Aufbau" },
+    { src: null, date: "2004-09", caption: "Tag 1 · 70 kg", tag: "Start" },
   ],
 };

@@ -250,7 +250,8 @@ h2 {
   object-position: center 25%;
 }
 
-.hero-media .ph span {
+.hero-media .ph span,
+.hero-media .ph svg {
   display: none;
 }
 
@@ -483,6 +484,60 @@ h2 {
   object-fit: cover;
 }
 
+/* ---------- Competitions ---------- */
+.comps {
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.comp {
+  display: grid;
+  grid-template-columns: 4rem 6rem 1fr auto auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.6rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.3s, padding 0.4s var(--ease);
+}
+
+.comp:hover {
+  background: linear-gradient(90deg, rgba(255, 90, 31, 0.1), transparent);
+  padding-left: 1.2rem;
+}
+
+.comp-no {
+  font-family: var(--display);
+  font-size: 2rem;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+}
+
+.comp-year {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.comp-name {
+  font-size: 1.25rem;
+}
+
+.comp-div {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.comp-place {
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: var(--grad);
+  color: #160800;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 /* ---------- Before / After ---------- */
 .compare {
   --pos: 50%;
@@ -693,7 +748,7 @@ h2 {
 /* ---------- Lifts ---------- */
 .lifts {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
 
@@ -924,8 +979,19 @@ h2 {
   }
 
   .lifts {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
+
+  .comp {
+    grid-template-columns: 3rem 1fr auto;
+    gap: 0.2rem 1rem;
+  }
+
+  .comp-no { grid-row: span 2; }
+  .comp-year { grid-column: 2; grid-row: 2; font-size: 0.85rem; }
+  .comp-name { grid-column: 2; grid-row: 1; font-size: 1.05rem; }
+  .comp-div { display: none; }
+  .comp-place { grid-column: 3; grid-row: 1 / span 2; }
 
   .compare {
     aspect-ratio: 3 / 4;
@@ -989,6 +1055,10 @@ h2 {
 
   .stat {
     padding: 1.2rem;
+  }
+
+  .lifts {
+    grid-template-columns: 1fr;
   }
 }
 
