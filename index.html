@@ -3,298 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testo-Investo (@Testo-Investo) | Feed</title>
-  <meta name="description" content="Testo-Investo – Gym-Disziplin trifft Krypto-Investing. Feed, Portfolio und Watchlist einer Personal Brand irgendwo zwischen Bankdrücken und Bitcoin.">
+  <title>Testo · Iron Journey</title>
+  <meta name="description" content="Testo · Iron Journey – meine Bodybuilding-Entwicklung Jahr für Jahr: Geschichte, Progress-Bilder und Bestleistungen.">
+  <meta name="theme-color" content="#0b0b0d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a href="#top" class="logo">Testo<span>-Investo</span></a>
-
-      <div class="search-wrap">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Suche nach Aktien, ETFs oder Profilen">
-      </div>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
-        <span></span><span></span><span></span>
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="logo">TESTO<span>.</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
       </button>
-
-      <nav class="main-nav" id="mainNav">
-        <a href="#">Gesamtvermögen</a>
-        <a href="#">Wealth</a>
-        <a href="#top" class="active">Feed</a>
-        <a href="#">Watchlist</a>
-        <a href="#" class="bell" aria-label="Benachrichtigungen">🔔</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#story">Story</a>
+        <a href="#transformation">Transformation</a>
+        <a href="#progress">Progress</a>
+        <a href="#kraft">Kraft</a>
+        <a href="#kontakt" class="nav-cta">Kontakt</a>
       </nav>
-
-      <button class="upgrade-btn">Upgrade ⚡</button>
     </div>
   </header>
 
   <main id="top">
-    <section class="profile-hero">
-      <div class="banner">
-        <img src="assets/images/hero-pink-hair-crash.webp" alt="Testo-Investo Bannerbild">
-        <span class="banner-badge">KING</span>
-      </div>
-
-      <div class="profile-card">
-        <img class="avatar" src="assets/images/post-bitcoin-exchange.webp" alt="Testo-Investo Profilbild">
-
-        <div class="profile-meta">
-          <h1>Testo-Investo <span class="verified" title="Verifiziert">✓</span></h1>
-          <p class="handle">@Testo-Investo</p>
-
-          <ul class="meta-list">
-            <li>📍 Deutschland</li>
-            <li>🗓️ Mitglied seit März 2021</li>
-            <li>👁️ 1,2 Mio. Aufrufe</li>
-            <li class="status-public">● Öffentlich</li>
-          </ul>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-media" id="heroMedia"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-content container">
+        <p class="eyebrow reveal">Bodybuilding · seit <span data-bind="startYear"></span></p>
+        <h1 class="hero-title reveal">
+          <span data-bind="name"></span>
+          <span class="outline" data-bind="title"></span>
+        </h1>
+        <p class="hero-tagline reveal" data-bind="tagline"></p>
+        <div class="hero-actions reveal">
+          <a href="#story" class="btn btn-primary">Meine Story</a>
+          <a href="#progress" class="btn btn-ghost">Aktuelle Bilder</a>
         </div>
       </div>
+      <div class="stats container" id="stats"></div>
+    </section>
 
-      <p class="bio">
-        💪₿ All in. Kein Trading-Hype, nur Iron Will &amp; Diamond Hands. Ich bin Testo-Investo –
-        hier baue ich Muskeln UND Portfolio, ohne Abkürzungen. Disziplin im Gym = Disziplin am
-        Markt. Steig ein, häng dich rein, halt durch. 🇩🇪
-      </p>
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Disziplin</span><span>Geduld</span><span>Progressive Overload</span><span>Meal-Prep</span><span>No Days Off</span><span>Iron Journey</span>
+        <span>Disziplin</span><span>Geduld</span><span>Progressive Overload</span><span>Meal-Prep</span><span>No Days Off</span><span>Iron Journey</span>
+      </div>
+    </div>
 
-      <div class="stats-bar">
-        <div><strong>48,2K</strong><span>Follower</span></div>
-        <div><strong>312</strong><span>Following</span></div>
-        <div><strong>27</strong><span>Positionen</span></div>
+    <!-- STORY / TIMELINE -->
+    <section class="section container" id="story">
+      <div class="section-head reveal">
+        <p class="eyebrow">01 — Story</p>
+        <h2>Jahr für Jahr gebaut.</h2>
+        <p class="section-lead">Jeder Abschnitt dieser Reise hat Spuren hinterlassen – im Spiegel und im Kopf. Hier ist die ganze Geschichte.</p>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <!-- BEFORE / AFTER -->
+    <section class="section container" id="transformation">
+      <div class="section-head reveal">
+        <p class="eyebrow">02 — Transformation</p>
+        <h2>Vorher. Nachher.</h2>
+        <p class="section-lead">Zieh den Regler und sieh selbst, was Jahre an Konsequenz ausmachen.</p>
+      </div>
+      <div class="compare reveal" id="compare">
+        <div class="compare-layer compare-after" id="compareAfter"></div>
+        <div class="compare-layer compare-before" id="compareBefore"></div>
+        <div class="compare-handle" id="compareHandle" aria-hidden="true"><span>⟷</span></div>
+        <input class="compare-range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="Vorher-Nachher-Vergleich verschieben">
       </div>
     </section>
 
-    <nav class="tabs">
-      <button class="tab active" type="button">Beiträge</button>
-      <button class="tab" type="button">Portfolio</button>
-      <button class="tab" type="button">Watchlist</button>
-    </nav>
+    <!-- PROGRESS GALLERY -->
+    <section class="section container" id="progress">
+      <div class="section-head reveal">
+        <p class="eyebrow">03 — Progress</p>
+        <h2>Aktuelle Bilder.</h2>
+        <p class="section-lead">Regelmäßige Updates – die neuesten zuerst.</p>
+      </div>
+      <div class="filters reveal" id="filters" role="toolbar" aria-label="Galerie nach Jahr filtern"></div>
+      <div class="gallery" id="gallery"></div>
+    </section>
 
-    <section class="feed">
+    <!-- STRENGTH -->
+    <section class="section container" id="kraft">
+      <div class="section-head reveal">
+        <p class="eyebrow">04 — Kraft</p>
+        <h2>Bestleistungen.</h2>
+        <p class="section-lead">Vom ersten Training bis heute – in Kilogramm.</p>
+      </div>
+      <div class="lifts" id="lifts"></div>
+    </section>
 
-      <!-- POST 1 -->
-      <article class="post">
-        <header class="post-head">
-          <img class="post-avatar" src="assets/images/post-bitcoin-exchange.webp" alt="Testo-Investo">
-          <div class="post-author">
-            <strong>Testo-Investo <span class="verified small">✓</span></strong>
-            <span>@Testo-Investo</span>
-          </div>
-          <div class="post-meta">
-            <span class="post-time">vor 3 Std.</span>
-            <span class="post-views">👁️ 84,3K</span>
-          </div>
-        </header>
-
-        <h2 class="post-hook">Grüne Kerzen, geile Nacht – WIR TANZEN AUF DEN CHARTS 🕺💰</h2>
-
-        <div class="post-text collapsed">
-          <p>Moin Testo Crew 💪😎</p>
-          <p>Während die Panik-Fraktion gestern Nachmittag ihre Bags mit Verlust rausgehauen hat, stand ich im Gym unterm Kreuzheben-Rack und hab gegrinst wie ein Honigkuchenpferd. Warum? Weil ich schon vor Monaten gelernt hab: Volatility ist kein Grund zur Panik, Volatility ist Cardio für dein Portfolio. 🏋️‍♂️📈</p>
-          <p>Grün, Rot, Grün, Rot – ist mir wumpe. Ich halte meine Bags wie ich meine Form halte: mit eiserner Disziplin und null Interesse an kurzfristigem Bullshit. Diamond Hands sind kein Meme, das ist ein Lifestyle. 💎🙌</p>
-          <p>Klar, gestern gab's kurz 'nen Dip, der manchen die Knie hat weich werden lassen. Aber wisst ihr, was bei mir weich wird? Höchstens der Bizeps nach Tag 3 im Deload. Sonst nix. 😂</p>
-          <p>Feiert ihr schon oder haltet ihr noch die Backen zusammen? Schreibt's in die Kommentare. 🔥</p>
-          <p>Grüße Testo 💪₿</p>
-          <p><em>P.S.: Nein, das Konfetti im Bild ist kein Symbol für "sell the news" – das ist einfach nur gute Laune, ihr Schisser. 😂</em></p>
-        </div>
-        <button class="more-toggle" type="button">Mehr anzeigen</button>
-
-        <img class="post-image" src="assets/images/post-disco-king.webp" alt="Testo-Investo feiert auf der Tanzfläche mit Bitcoin-Münzen">
-
-        <div class="post-reactions">
-          <span class="reaction-emojis">💪😎🔥❤️</span>
-          <span class="reaction-count">2,4K Reaktionen</span>
-          <span class="comment-count">318 Kommentare</span>
-        </div>
-
-        <div class="post-actions">
-          <button type="button">👍 Gefällt mir</button>
-          <button type="button">💬 Kommentieren</button>
-          <button type="button">↗️ Teilen</button>
-        </div>
-
-        <div class="comments">
-          <div class="comment">
-            <div class="comment-avatar" style="background:#ff8a3d">KK</div>
-            <div class="comment-body">
-              <strong>Krypto_Kalle89</strong>
-              <p class="comment-text">Bruder ich hab gestern verkauft und heute schon wieder bereut 😭 Nächstes Mal halt ich wie du</p>
-              <div class="comment-actions">
-                <button class="replies-toggle" type="button">Alle 12 Antworten anzeigen</button>
-              </div>
-            </div>
-          </div>
-          <div class="comment">
-            <div class="comment-avatar" style="background:#e63b7a">FS</div>
-            <div class="comment-body">
-              <strong>FitFrau_Sandra</strong>
-              <p class="comment-text">Dein Gesicht auf dem Bild ist Content pur 😂😂 aber du hast recht, Disziplin schlägt Panik</p>
-              <div class="comment-actions">
-                <button class="replies-toggle" type="button">Alle 4 Antworten anzeigen</button>
-              </div>
-            </div>
-          </div>
-
-          <form class="comment-input">
-            <input type="text" placeholder="Schreib einen Kommentar …">
-            <button type="submit">Senden</button>
-          </form>
-        </div>
-      </article>
-
-      <!-- POST 2 -->
-      <article class="post">
-        <header class="post-head">
-          <img class="post-avatar" src="assets/images/post-bitcoin-exchange.webp" alt="Testo-Investo">
-          <div class="post-author">
-            <strong>Testo-Investo <span class="verified small">✓</span></strong>
-            <span>@Testo-Investo</span>
-          </div>
-          <div class="post-meta">
-            <span class="post-time">vor 1 Tag</span>
-            <span class="post-views">👁️ 61,7K</span>
-          </div>
-        </header>
-
-        <h2 class="post-hook">Vor der nächsten Position hab ich erstmal … nachgedacht 🤔💵</h2>
-
-        <div class="post-text collapsed">
-          <p>Moin Testo Crew 💪</p>
-          <p>Bevor ihr fragt: Nein, das ist kein neuer Skin, das ist mein "Ich-überlege-die-nächste-Position"-Gesicht. Sitze hier mit ein bisschen Cash auf der Seite und wäge ab, wo die nächste Tranche reingeht. Genau wie beim Trainingsplan – man ballert nicht wahllos Gewichte drauf, man plant den nächsten Satz. 🏋️‍♂️</p>
-          <p>Aktuelles Thema, das mich beschäftigt: die Diskussion um die Haltefristen. Manche Politiker wollen ja wieder an der Steuerschraube drehen. Ganz ehrlich: mich juckt's nicht. Ich halte eh länger als ein Jahr, meistens länger als eine komplette Bulking-Phase. Steuerfrei nach Ablauf der Frist ist für mich wie der Unterschied zwischen Definitionsphase und dauerhaftem Ergebnis – Geduld zahlt sich aus. 📆💪</p>
-          <p>Manche Leute wechseln ihre Positionen öfter als ihr Trainingssplit. Kein Wunder, dass die nie einen richtigen Aufbau hinkriegen – weder im Depot noch im Spiegel. 😂</p>
-          <p>Was ist eure Strategie – Buy &amp; Hold wie ein Kreuzheben-Purist, oder ständig neue "Trends" wie beim Trainingsplan-Hopping? Ab in die Kommentare. 👇</p>
-          <p>Grüße Testo 😎</p>
-          <p><em>P.S.: Die bunte Perücke bleibt übrigens Ansichtssache. Mein Portfolio ist trotzdem seriöser als so manches ETF-Sparplan-Video auf TikTok. 💅</em></p>
-        </div>
-        <button class="more-toggle" type="button">Mehr anzeigen</button>
-
-        <img class="post-image" src="assets/images/post-desk-cash.webp" alt="Testo-Investo überlegt am Schreibtisch mit Bargeld-Stapeln">
-
-        <div class="post-reactions">
-          <span class="reaction-emojis">💪💵🤔❤️</span>
-          <span class="reaction-count">1,8K Reaktionen</span>
-          <span class="comment-count">204 Kommentare</span>
-        </div>
-
-        <div class="post-actions">
-          <button type="button">👍 Gefällt mir</button>
-          <button type="button">💬 Kommentieren</button>
-          <button type="button">↗️ Teilen</button>
-        </div>
-
-        <div class="comments">
-          <div class="comment">
-            <div class="comment-avatar" style="background:#3dd6c2">DD</div>
-            <div class="comment-body">
-              <strong>DividendenDennis</strong>
-              <p class="comment-text">Haltefrist ftw, zahl doch keine unnötige Steuer 💯</p>
-              <div class="comment-actions">
-                <button class="replies-toggle" type="button">Alle 7 Antworten anzeigen</button>
-              </div>
-            </div>
-          </div>
-          <div class="comment">
-            <div class="comment-avatar" style="background:#f2a900">BB</div>
-            <div class="comment-body">
-              <strong>Bankdrücken_Boris</strong>
-              <p class="comment-text">Perücke muss bleiben, ist mittlerweile Markenzeichen 😅</p>
-              <div class="comment-actions">
-                <button class="replies-toggle" type="button">Alle 2 Antworten anzeigen</button>
-              </div>
-            </div>
-          </div>
-
-          <form class="comment-input">
-            <input type="text" placeholder="Schreib einen Kommentar …">
-            <button type="submit">Senden</button>
-          </form>
-        </div>
-      </article>
-
-      <!-- POST 3 -->
-      <article class="post">
-        <header class="post-head">
-          <img class="post-avatar" src="assets/images/post-bitcoin-exchange.webp" alt="Testo-Investo">
-          <div class="post-author">
-            <strong>Testo-Investo <span class="verified small">✓</span></strong>
-            <span>@Testo-Investo</span>
-          </div>
-          <div class="post-meta">
-            <span class="post-time">vor 2 Tagen</span>
-            <span class="post-views">👁️ 112K</span>
-          </div>
-        </header>
-
-        <h2 class="post-hook">ALLE SCHREIEN "CRASH", ICH SCHREI NUR BEIM SATZTRAINING 🗣️📉</h2>
-
-        <div class="post-text collapsed">
-          <p>Moin Testo Crew 💪🔥</p>
-          <p>Ok, gestern hat's mal wieder ordentlich rot geregnet auf den Charts. Mein Handy hat vibriert wie ein Presslufthammer, jede App eine neue Hiobsbotschaft. Und ich? Ich stand im Studio, hab meinen letzten Satz Bankdrücken gemacht und dabei genauso laut geschrien wie die Bildschirme im Hintergrund aussahen. 😂🏋️‍♂️</p>
-          <p>Der Unterschied: Mein Schrei war kontrolliertes Training, keine Panik. Die Kerzen unten sind rot? Cool story. Ich verkaufe doch nicht meine Substanz, nur weil der Markt kurz seine Regeltage hat. 📉 (Ja, das war too much, ich weiß.)</p>
-          <p>Marktschwankungen sind für mich das, was der letzte Rep vor dem Muskelversagen ist: unangenehm, laut, aber genau da, wo der eigentliche Fortschritt passiert. Wer beim ersten Brennen abbricht, baut weder Muckis noch Vermögen auf. 💪₿</p>
-          <p>Ich hab in der Zeit einfach nachgekauft. Discipline over Emotion. Immer.</p>
-          <p>Wer von euch hat gestern auch nachgekauft, und wer hat aus Panik verkauft? Ehrlich sein, ich urteile nicht … doch, ein bisschen schon. 😂👇</p>
-          <p>Grüße Testo 💪</p>
-          <p><em>P.S.: Nein, ich brülle nicht wegen der Steuer-Vorabpauschale. Das mach ich nur beim letzten Satz Beinpresse. Bei der Steuer bin ich einfach nur genervt still. 🙃</em></p>
-        </div>
-        <button class="more-toggle" type="button">Mehr anzeigen</button>
-
-        <img class="post-image" src="assets/images/post-angry-flex.webp" alt="Testo-Investo schreit vor Trading-Bildschirmen mit roten Charts">
-
-        <div class="post-reactions">
-          <span class="reaction-emojis">💪🔥😤❤️</span>
-          <span class="reaction-count">3,1K Reaktionen</span>
-          <span class="comment-count">427 Kommentare</span>
-        </div>
-
-        <div class="post-actions">
-          <button type="button">👍 Gefällt mir</button>
-          <button type="button">💬 Kommentieren</button>
-          <button type="button">↗️ Teilen</button>
-        </div>
-
-        <div class="comments">
-          <div class="comment">
-            <div class="comment-avatar" style="background:#8a5cff">SS</div>
-            <div class="comment-body">
-              <strong>StahlharteSteffi</strong>
-              <p class="comment-text">Hab nachgekauft! Fühlt sich gut an 💪</p>
-              <div class="comment-actions">
-                <button class="replies-toggle" type="button">Alle 9 Antworten anzeigen</button>
-              </div>
-            </div>
-          </div>
-          <div class="comment">
-            <div class="comment-avatar" style="background:#43b581">PP</div>
-            <div class="comment-body">
-              <strong>PanikPeter_no_more</strong>
-              <p class="comment-text">Bin raus gewesen, jetzt wieder rein. Nie wieder Panik-Verkauf, versprochen</p>
-              <div class="comment-actions">
-                <button class="replies-toggle" type="button">Alle 5 Antworten anzeigen</button>
-              </div>
-            </div>
-          </div>
-
-          <form class="comment-input">
-            <input type="text" placeholder="Schreib einen Kommentar …">
-            <button type="submit">Senden</button>
-          </form>
-        </div>
-      </article>
-
+    <!-- CONTACT -->
+    <section class="section container contact reveal" id="kontakt">
+      <p class="eyebrow">05 — Kontakt</p>
+      <h2>Die Reise geht weiter.</h2>
+      <p class="section-lead">Fragen, Kooperationen oder einfach Motivation teilen – schreib mir.</p>
+      <div class="contact-links" id="contactLinks"></div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Testo-Investo. Parodie-/Unterhaltungs-Content – keine Anlageberatung.</p>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="logo">TESTO<span>.</span></span>
+      <p>&copy; <span id="year"></span> Testo · Iron Journey</p>
+      <a href="#top">Nach oben ↑</a>
+    </div>
   </footer>
 
+  <dialog class="lightbox" id="lightbox" aria-label="Bildansicht">
+    <button class="lb-close" id="lbClose" aria-label="Schließen">✕</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Vorheriges Bild">‹</button>
+    <figure>
+      <div class="lb-media" id="lbMedia"></div>
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Nächstes Bild">›</button>
+  </dialog>
+
+  <script src="content.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
