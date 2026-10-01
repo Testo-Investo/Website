@@ -20,7 +20,7 @@ window.SITE = {
     title: "Iron Journey",
     tagline: "22 Jahre. 45 Kilo mehr. Null Abkürzungen – nur Eisen, Reis mit Hähnchen und eine Engelsgeduld.",
     startYear: 2004,
-    heroImage: null, // z. B. "assets/progress/hero.jpg"
+    heroImage: "assets/progress/hero-kreuzheben.jpg",
     instagram: "", // z. B. "https://instagram.com/deinname"
     email: "", // z. B. "kontakt@example.de"
   },

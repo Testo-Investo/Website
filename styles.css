@@ -264,6 +264,32 @@ h2 {
     linear-gradient(90deg, rgba(11, 11, 13, 0.75) 0%, transparent 70%);
 }
 
+@media (min-width: 901px) {
+  .hero-media {
+    left: 34%;
+  }
+
+  .hero-media img {
+    object-position: center 20%;
+  }
+
+  .hero-media::after {
+    background:
+      linear-gradient(180deg, rgba(11, 11, 13, 0.4) 0%, transparent 25%, transparent 55%, var(--bg) 100%),
+      linear-gradient(90deg, var(--bg) 0%, rgba(11, 11, 13, 0.55) 22%, transparent 55%);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-media img {
+    object-position: 50% top;
+  }
+
+  .hero-media::after {
+    background: linear-gradient(180deg, rgba(11, 11, 13, 0.3) 0%, rgba(11, 11, 13, 0.15) 30%, rgba(11, 11, 13, 0.85) 62%, var(--bg) 100%);
+  }
+}
+
 .hero-glow {
   position: absolute;
   z-index: -1;
