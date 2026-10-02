@@ -82,8 +82,18 @@ window.SITE = {
   ],
 
   // Wettkämpfe – [Platzhalter], bitte Jahr, Name, Klasse und Platzierung eintragen
+  // photos (optional): Bilder vom Wettkampf, z. B. aus assets/wettkaempfe/
   competitions: [
-    { year: "20??", name: "Wettkampf 1", division: "Klasse folgt", place: "?" },
+    {
+      year: "2015",
+      name: "NRW-Meisterschaft",
+      division: "Männer III",
+      place: "?",
+      photos: [
+        { src: "assets/wettkaempfe/2015-nrw/lat-spread.jpg", caption: "Lat Spread von vorne" },
+        { src: "assets/wettkaempfe/2015-nrw/bauch-beine.jpg", caption: "Bauch-Beine-Pose" },
+      ],
+    },
     { year: "20??", name: "Wettkampf 2", division: "Klasse folgt", place: "?" },
     { year: "20??", name: "Wettkampf 3", division: "Klasse folgt", place: "?" },
     { year: "20??", name: "Wettkampf 4", division: "Klasse folgt", place: "?" },

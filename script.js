@@ -56,7 +56,12 @@ document.getElementById("timeline").innerHTML = site.timeline
   .join("");
 
 /* ---------- Competitions ---------- */
-document.getElementById("comps").innerHTML = site.competitions
+const compsEl = document.getElementById("comps");
+const compPhotos = site.competitions.map((c) =>
+  (c.photos || []).map((p) => ({ ...p, date: c.year, tag: `${c.name} · ${c.division}` }))
+);
+
+compsEl.innerHTML = site.competitions
   .map(
     (c, i) => `
     <li class="comp reveal" style="transition-delay:${i * 80}ms">
@@ -65,6 +70,18 @@ document.getElementById("comps").innerHTML = site.competitions
       <strong class="comp-name">${escapeHtml(c.name)}</strong>
       <span class="comp-div">${escapeHtml(c.division)}</span>
       <span class="comp-place">Platz ${escapeHtml(c.place)}</span>
+      ${
+        compPhotos[i].length
+          ? `<div class="comp-photos">${compPhotos[i]
+              .map(
+                (p, pi) => `
+            <button type="button" class="comp-photo" data-comp="${i}" data-index="${pi}" aria-label="${escapeHtml(p.caption)} – vergrößern">
+              <img src="${escapeHtml(p.src)}" alt="${escapeHtml(p.caption)}" loading="lazy" decoding="async">
+            </button>`
+              )
+              .join("")}</div>`
+          : ""
+      }
     </li>`
   )
   .join("");
@@ -170,6 +187,14 @@ galleryEl.addEventListener("click", (e) => {
   const item = e.target.closest(".g-item");
   if (!item) return;
   lbList = visible;
+  showImage(Number(item.dataset.index));
+  lightbox.showModal();
+});
+
+compsEl.addEventListener("click", (e) => {
+  const item = e.target.closest(".comp-photo");
+  if (!item) return;
+  lbList = compPhotos[Number(item.dataset.comp)];
   showImage(Number(item.dataset.index));
   lightbox.showModal();
 });

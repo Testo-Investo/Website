@@ -564,6 +564,32 @@ h2 {
   white-space: nowrap;
 }
 
+.comp-photos {
+  grid-column: 2 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.comp-photo {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+.comp-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.comp-photo:hover img {
+  transform: scale(1.05);
+}
+
 /* ---------- Shootings ---------- */
 .shoot + .shoot {
   margin-top: 5rem;
@@ -1147,7 +1173,8 @@ h2 {
   .comp-no { grid-row: span 2; }
   .comp-year { grid-column: 2; grid-row: 2; font-size: 0.85rem; }
   .comp-name { grid-column: 2; grid-row: 1; font-size: 1.05rem; }
-  .comp-div { display: none; }
+  .comp-div { grid-column: 2; grid-row: 3; font-size: 0.85rem; }
+  .comp-photos { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; margin-top: 0.8rem; }
   .comp-place { grid-column: 3; grid-row: 1 / span 2; }
 
   .compare {
