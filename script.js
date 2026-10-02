@@ -69,6 +69,38 @@ document.getElementById("comps").innerHTML = site.competitions
   )
   .join("");
 
+/* ---------- Shootings ---------- */
+const shootingsEl = document.getElementById("shootings");
+const shootingPhotos = site.shootings.map((sh) =>
+  sh.photos.map((p) => ({ ...p, date: sh.year, tag: sh.title }))
+);
+
+shootingsEl.innerHTML = site.shootings
+  .map(
+    (sh, si) => `
+    <article class="shoot">
+      <header class="shoot-head reveal">
+        <span class="shoot-year">${escapeHtml(sh.year)}</span>
+        <div>
+          <h3>${escapeHtml(sh.title)} ${escapeHtml(sh.year)}</h3>
+          ${sh.text ? `<p>${escapeHtml(sh.text)}</p>` : ""}
+        </div>
+      </header>
+      <div class="collage reveal">
+        ${sh.photos
+          .map(
+            (p, pi) => `
+          <button type="button" class="c-item" data-shoot="${si}" data-index="${pi}" aria-label="${escapeHtml(p.caption)} – vergrößern">
+            <img src="${escapeHtml(p.src)}" alt="${escapeHtml(p.caption)}" loading="lazy" decoding="async"${p.focus ? ` style="object-position:${escapeHtml(p.focus)}"` : ""}>
+            <span class="c-cap">${escapeHtml(p.caption)}</span>
+          </button>`
+          )
+          .join("")}
+      </div>
+    </article>`
+  )
+  .join("");
+
 /* ---------- Before / After ---------- */
 const { before, after } = site.comparison;
 document.getElementById("compareBefore").innerHTML =
@@ -125,10 +157,11 @@ const lightbox = document.getElementById("lightbox");
 const lbMedia = document.getElementById("lbMedia");
 const lbCaption = document.getElementById("lbCaption");
 let current = 0;
+let lbList = [];
 
 const showImage = (index) => {
-  current = (index + visible.length) % visible.length;
-  const g = visible[current];
+  current = (index + lbList.length) % lbList.length;
+  const g = lbList[current];
   lbMedia.innerHTML = media(g.src, g.caption, "Foto folgt", true);
   lbCaption.innerHTML = `<strong>${escapeHtml(g.caption)}</strong> · ${formatDate(g.date)}${g.tag ? ` · ${escapeHtml(g.tag)}` : ""}`;
 };
@@ -136,6 +169,15 @@ const showImage = (index) => {
 galleryEl.addEventListener("click", (e) => {
   const item = e.target.closest(".g-item");
   if (!item) return;
+  lbList = visible;
+  showImage(Number(item.dataset.index));
+  lightbox.showModal();
+});
+
+shootingsEl.addEventListener("click", (e) => {
+  const item = e.target.closest(".c-item");
+  if (!item) return;
+  lbList = shootingPhotos[Number(item.dataset.shoot)];
   showImage(Number(item.dataset.index));
   lightbox.showModal();
 });

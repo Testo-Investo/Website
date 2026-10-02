@@ -20,7 +20,7 @@ window.SITE = {
     title: "Iron Journey",
     tagline: "22 Jahre. 45 Kilo mehr. Null Abkürzungen – nur Eisen, Reis mit Hähnchen und eine Engelsgeduld.",
     startYear: 2004,
-    heroImage: "assets/progress/hero-kreuzheben.jpg",
+    heroImage: "assets/shootings/2017/kreuzheben.jpg",
     instagram: "", // z. B. "https://instagram.com/deinname"
     email: "", // z. B. "kontakt@example.de"
   },
@@ -95,6 +95,23 @@ window.SITE = {
     before: { src: null, label: "2004 · 70 kg" },
     after: { src: null, label: "2026 · 115 kg" },
   },
+
+  // Fotoshootings – werden als Collage angezeigt. Neues Shooting = neuer Block,
+  // Fotos in einen eigenen Ordner legen, z. B. assets/shootings/2027/
+  shootings: [
+    {
+      title: "Fotoshooting",
+      year: "2017",
+      text: "Ein Tag, ein Fotograf, kein Filter für die Anstrengung im Gesicht. Jeder Schatten auf diesen Bildern hat Jahre gekostet.",
+      photos: [
+        { src: "assets/shootings/2017/kabelzug.jpg", caption: "Double Biceps am Kabelzug", focus: "50% 30%" },
+        { src: "assets/shootings/2017/rudern.jpg", caption: "Einarmiges Kurzhantelrudern", focus: "50% 25%" },
+        { src: "assets/shootings/2017/hackenschmidt.jpg", caption: "Hackenschmidt-Kniebeuge", focus: "50% 20%" },
+        { src: "assets/shootings/2017/bank.jpg", caption: "Kurze Pause zwischen den Sätzen", focus: "60% 30%" },
+        { src: "assets/shootings/2017/kreuzheben.jpg", caption: "Kreuzheben", focus: "60% 35%" },
+      ],
+    },
+  ],
 
   // Progress-Galerie – neueste Bilder ganz oben eintragen.
   // date: "JJJJ-MM"   tag: frei wählbar (z. B. Aufbau, Diät, Wettkampf, Shooting)

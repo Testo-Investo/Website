@@ -20,6 +20,13 @@ Alle Texte, Zahlen und Bilder stehen in **`content.js`**. HTML musst du nicht an
 
 Einträge mit `src: null` werden als Platzhalter angezeigt.
 
+### Neues Fotoshooting
+
+1. Ordner anlegen, z. B. `assets/shootings/2027/`, Fotos hineinlegen.
+2. In `content.js` bei `shootings` einen Block nach dem Muster von 2017 ergänzen.
+   Die Collage ordnet sich automatisch an (am besten 5 Fotos:
+   1. Querformat, 2.+3. Hochformat, 4.+5. Querformat). `focus` steuert den Bildausschnitt.
+
 ## Lokal ansehen
 
 ```bash
