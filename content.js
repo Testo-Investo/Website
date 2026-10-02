@@ -90,6 +90,11 @@ window.SITE = {
       division: "",
       place: "1",
       date: "21.06.2008",
+      photos: [
+        { src: "assets/wettkaempfe/2008-studiomeisterschaft/backstage.jpg", caption: "Backstage – frisch gebräunt, breit gegrinst", focus: "50% 18%" },
+        { src: "assets/wettkaempfe/2008-studiomeisterschaft/vergleich-double-biceps.jpg", caption: "Vergleich: Double Biceps", focus: "50% 30%" },
+        { src: "assets/wettkaempfe/2008-studiomeisterschaft/vergleich-lat-spread.jpg", caption: "Vergleich: Lat Spread von vorne", focus: "50% 30%" },
+      ],
     },
     {
       year: "2015",
