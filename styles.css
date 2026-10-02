@@ -1251,9 +1251,22 @@ h2 {
   }
 
   .g-meta {
-    padding: 2rem 0.7rem 0.7rem;
+    padding: 1.6rem 0.6rem 0.55rem;
     flex-direction: column;
     align-items: flex-start;
+    line-height: 1.3;
+  }
+
+  .g-meta strong {
+    font-size: 0.8rem;
+  }
+
+  .g-meta small {
+    font-size: 0.72rem;
+  }
+
+  .g-tag {
+    display: none;
   }
 
   .lb-nav {

@@ -175,6 +175,9 @@ window.SITE = {
   // date: "JJJJ-MM"   tag: frei wählbar (z. B. Aufbau, Diät, Wettkampf, Shooting)
   gallery: [
     { src: "assets/shootings/2015/hantelbank-farbe.jpg", date: "2015", caption: "Zwischen den Kurzhanteln", tag: "Shooting" },
+    { src: "assets/progress/2008-ibiza/front.jpg", date: "2008", caption: "Ibiza – Training statt Strandbar", tag: "Ibiza" },
+    { src: "assets/progress/2008-ibiza/arm-hinterm-kopf.jpg", date: "2008", caption: "Bauch-Beine-Pose in der Sonne", tag: "Ibiza" },
+    { src: "assets/progress/2008-ibiza/ruecken.jpg", date: "2008", caption: "Rücken im Gegenlicht", tag: "Ibiza" },
     { src: "assets/progress/2006/front.jpg", date: "2006", caption: "Die Anfänge", tag: "Start" },
     { src: "assets/progress/2006/rueckenbizeps.jpg", date: "2006", caption: "Double Biceps unterm Weihnachtsbaum", tag: "Start" },
     { src: "assets/progress/2006/balkon.jpg", date: "2006", caption: "Urlaub – noch ohne Meal-Prep", tag: "Start" },
