@@ -27,6 +27,15 @@ Einträge mit `src: null` werden als Platzhalter angezeigt.
    Die Collage ordnet sich automatisch an (am besten 5 Fotos:
    1. Querformat, 2.+3. Hochformat, 4.+5. Querformat). `focus` steuert den Bildausschnitt.
 
+## Impressum & Datenschutz
+
+`impressum.html` und `datenschutz.html` sind **Vorlagen**: Alle Angaben in
+`[eckigen Klammern]` vor dem Launch durch echte Daten ersetzen (keine Rechtsberatung).
+Die Datenschutzerklärung geht davon aus, dass die Seite über GitHub Pages läuft,
+keine Cookies/Tracking nutzt und die Schriften lokal lädt (`assets/fonts/`).
+Kommen Kontaktformular, Statistik-Tool, eingebettete Instagram-Posts o. Ä. dazu,
+muss sie angepasst werden.
+
 ## Lokal ansehen
 
 ```bash

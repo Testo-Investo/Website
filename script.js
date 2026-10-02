@@ -17,9 +17,9 @@ const placeholder = (label = "Foto folgt") => `
     <span>${escapeHtml(label)}</span>
   </div>`;
 
-const media = (src, alt, label, eager = false) =>
+const media = (src, alt, label, eager = false, focus = "") =>
   src
-    ? `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ${eager ? "" : 'loading="lazy"'} decoding="async">`
+    ? `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ${eager ? "" : 'loading="lazy"'} decoding="async"${focus ? ` style="object-position:${escapeHtml(focus)}"` : ""}>`
     : placeholder(label);
 
 /* ---------- Profile ---------- */
@@ -44,13 +44,13 @@ document.getElementById("stats").innerHTML = site.stats
 document.getElementById("timeline").innerHTML = site.timeline
   .map(
     (t) => `
-    <li class="tl-item reveal">
+    <li class="tl-item${t.image ? "" : " tl-item--solo"} reveal">
       <div class="tl-text">
         <span class="tl-year">${escapeHtml(t.year)}</span>
         <h3>${escapeHtml(t.title)}</h3>
         <p>${escapeHtml(t.text)}</p>
       </div>
-      <div class="tl-media">${media(t.image, `${t.year} – ${t.title}`, `Foto ${t.year}`)}</div>
+      ${t.image ? `<div class="tl-media">${media(t.image, `${t.year} – ${t.title}`, "", false, t.focus)}</div>` : ""}
     </li>`
   )
   .join("");
@@ -69,7 +69,7 @@ compsEl.innerHTML = site.competitions
       <span class="comp-year">${escapeHtml(c.year)}</span>
       <strong class="comp-name">${escapeHtml(c.name)}</strong>
       ${c.division ? `<span class="comp-div">${escapeHtml(c.division)}</span>` : ""}
-      <span class="comp-place">${String(c.place) === "1" ? "🏆 " : ""}Platz ${escapeHtml(c.place)}</span>
+      ${c.place ? `<span class="comp-place">${String(c.place) === "1" ? "🏆 " : ""}Platz ${escapeHtml(c.place)}</span>` : ""}
       ${
         compPhotos[i].length
           ? `<div class="comp-photos${c.layout ? ` comp-photos--${escapeHtml(c.layout)}` : ""}">${compPhotos[i]
@@ -239,12 +239,13 @@ const liftCard = (name, start, now, max, unit = "kg") => `
       <h3>${escapeHtml(name)}</h3>
       <div class="lift-now">${now}<small>${unit}</small></div>
       <div class="lift-bar"><i style="--w:${(now / max) * 100}%"></i></div>
-      <div class="lift-delta"><span>Start: ${start} ${unit}</span><b>+${now - start} ${unit}</b></div>
+      <div class="lift-delta"><span>Start: ${start} ${unit}</span><b>${now >= start ? "+" : "−"}${Math.abs(now - start)} ${unit}</b></div>
     </article>`;
 
 const maxLift = Math.max(0, ...site.lifts.map((l) => l.now));
 document.getElementById("lifts").innerHTML =
-  liftCard("Körpergewicht", site.weight.start, site.weight.now, site.weight.now) +
+  liftCard("Körpergewicht seit 2004", site.weight.start, site.weight.now, site.weight.now) +
+  (site.diet ? liftCard(site.diet.label, site.diet.start, site.diet.now, site.diet.start) : "") +
   site.lifts.map((l) => liftCard(l.name, l.start, l.now, maxLift)).join("");
 
 /* ---------- Contact ---------- */

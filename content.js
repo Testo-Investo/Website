@@ -37,6 +37,9 @@ window.SITE = {
   // Körpergewicht: Start und heute
   weight: { start: 70, now: 115 },
 
+  // Diät 2026: Diätstart (Januar) und Topform
+  diet: { label: "Diät 2026", start: 133, now: 115 },
+
   // Bestleistungen (Kraftwerte) – erscheinen erst, wenn hier Einträge stehen. Beispiel:
   // { name: "Bankdrücken", start: 60, now: 180 },
   lifts: [],
@@ -45,8 +48,8 @@ window.SITE = {
   timeline: [
     {
       year: "2004",
-      title: "Tag 1 mit 70 Kilo",
-      text: "Zum ersten Mal ins Studio. Die Hanteln waren schwerer als gedacht, das Ego auch. Aber irgendwas hat an diesem Tag Klick gemacht – und es hat nie wieder aufgehört.",
+      title: "Ein Urlaub mit Folgen",
+      text: "Mit 70 Kilo in den Urlaub, mit einem neuen Lebensinhalt zurück: Jason hat mich zum Bodybuilding gebracht. Ob er wusste, was er da anrichtet? Ich jedenfalls nicht. Danke, Jason.",
       image: null,
     },
     {
@@ -56,32 +59,48 @@ window.SITE = {
       image: "assets/progress/2006/rueckenbizeps.jpg",
     },
     {
-      year: "20??",
-      title: "Die erste Bühne",
-      text: "[Platzhalter] Wettkampf Nr. 1. Peak Week, Bräunungsfarbe, zitternde Knie – und der Moment, in dem sich alles gelohnt hat.",
+      year: "2008",
+      title: "Erste Bühne, erster Titel",
+      text: "Erster Wettkampf, Studiomeisterschaft – und direkt Platz 1. Bräunungsfarbe bis in die Haarspitzen, Grinsen bis zu den Ohren. Die Form ging danach gleich mit nach Ibiza.",
+      image: "assets/wettkaempfe/2008-studiomeisterschaft/backstage.jpg",
+      focus: "50% 18%",
+    },
+    {
+      year: "Autsch",
+      title: "Supraspinatussehne gerissen",
+      text: "Das genaue Datum weiß ich nicht mehr – das Gefühl schon. Reha statt Rekorde, Geduld statt Gewichte. Aufhören stand trotzdem nie zur Debatte.",
       image: null,
     },
     {
-      year: "20??",
-      title: "Rückschläge gehören dazu",
-      text: "[Platzhalter] Verletzung, Pause oder einfach das Leben dazwischen? Auch das ist Teil der Reise – entscheidend ist, wieder unter die Stange zu gehen.",
-      image: null,
+      year: "2015",
+      title: "Zurück auf der großen Bühne",
+      text: "NRW-Meisterschaft und ein Fotoshooting in Schwarz-Weiß: Die Schulter hat gehalten, die Form auch. Comeback geglückt.",
+      image: "assets/shootings/2015/ringe.jpg",
+      focus: "50% 25%",
     },
     {
-      year: "20??",
-      title: "Fünf Mal auf der Bühne",
-      text: "[Platzhalter] Mit jedem Wettkampf ein Stück besser: mehr Masse, mehr Härte, besseres Posing. Fünf Starts, unzählige Lektionen.",
-      image: null,
+      year: "2017",
+      title: "Zum zweiten Mal Studiomeister",
+      text: "Neun Jahre nach dem ersten Titel wieder ganz oben – und dazu ein Shooting in Bestform. Manche Dinge werden mit dem Alter einfach besser.",
+      image: "assets/wettkaempfe/2017-studiomeisterschaft/sieger-double-biceps.jpg",
+      focus: "50% 8%",
+    },
+    {
+      year: "2018",
+      title: "Noch mal NRW",
+      text: "Größere Bühne, härtere Konkurrenz, gleiches Grinsen. Startnummer 230 – und jede Menge Adern.",
+      image: "assets/wettkaempfe/2018-nrw/lat-spread.jpg",
+      focus: "50% 22%",
     },
     {
       year: "2026",
-      title: "Topform mit 115 Kilo",
-      text: "22 Jahre später: 45 Kilo mehr auf den Rippen und die beste Form meines Lebens. Der Tank ist voll, die Hosen sind zu eng – und die Reise ist noch lange nicht vorbei.",
+      title: "Von 133 auf 115 Kilo",
+      text: "Januar 2026: Diätstart mit 133 Kilo, Ziel Sommerform. Ergebnis: 115 Kilo und die beste Form meines Lebens. 18 Kilo runter, kein Gramm Ehrgeiz verloren – und die Reise ist noch lange nicht vorbei.",
       image: null,
     },
   ],
 
-  // Wettkämpfe – [Platzhalter], bitte Jahr, Name, Klasse und Platzierung eintragen
+  // Wettkämpfe – place und division sind optional (leer = wird nicht angezeigt)
   // photos (optional): Bilder vom Wettkampf, z. B. aus assets/wettkaempfe/
   competitions: [
     {
@@ -100,7 +119,7 @@ window.SITE = {
       year: "2015",
       name: "NRW-Meisterschaft",
       division: "Männer III",
-      place: "?",
+      place: "",
       photos: [
         { src: "assets/wettkaempfe/2015-nrw/lat-spread.jpg", caption: "Lat Spread von vorne" },
         { src: "assets/wettkaempfe/2015-nrw/bauch-beine.jpg", caption: "Bauch-Beine-Pose" },
@@ -123,7 +142,7 @@ window.SITE = {
       year: "2018",
       name: "NRW-Meisterschaft",
       division: "",
-      place: "?",
+      place: "",
       layout: "portraits", // Hochformat-Fotos -> hohe Vorschaukacheln
       photos: [
         { src: "assets/wettkaempfe/2018-nrw/lat-spread.jpg", caption: "Lat Spread von vorne · Foto: Oliver Rink / TEAM-ANDRO", focus: "50% 30%" },
@@ -133,7 +152,6 @@ window.SITE = {
         { src: "assets/wettkaempfe/2018-nrw/vorbereitung.jpg", caption: "Formcheck in der Vorbereitung", focus: "50% 35%" },
       ],
     },
-    { year: "20??", name: "Wettkampf 5", division: "Klasse folgt", place: "?" },
   ],
 
   // Vorher / Nachher-Vergleich (Schieberegler)
