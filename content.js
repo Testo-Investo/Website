@@ -111,6 +111,18 @@ window.SITE = {
         { src: "assets/shootings/2017/kreuzheben.jpg", caption: "Kreuzheben", focus: "60% 35%" },
       ],
     },
+    {
+      title: "Fotoshooting",
+      year: "2015",
+      layout: "portraits", // alle Fotos im Hochformat -> gleich breite Spalten
+      text: "Harte Kontraste, ein Grinsen, das man nur nach dem letzten Satz hat – und ein Rücken, der für sich spricht. Ehrlicher wird Eisen nicht.",
+      photos: [
+        { src: "assets/shootings/2015/hantelbank.jpg", caption: "Zwischen den Kurzhanteln", focus: "50% 35%" },
+        { src: "assets/shootings/2015/ringe.jpg", caption: "Dips an den Ringen", focus: "50% 30%" },
+        { src: "assets/shootings/2015/lichtstab.jpg", caption: "Spiel mit dem Licht", focus: "50% 40%" },
+        { src: "assets/shootings/2015/ruecken.jpg", caption: "Rücken in Form", focus: "50% 30%" },
+      ],
+    },
   ],
 
   // Progress-Galerie – neueste Bilder ganz oben eintragen.

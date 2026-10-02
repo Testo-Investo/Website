@@ -614,6 +614,17 @@ h2 {
 .c-item:nth-child(5n + 4),
 .c-item:nth-child(5n + 5) { grid-column: span 2; }
 
+.collage--portraits {
+  grid-template-rows: none;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.collage--portraits .c-item:nth-child(n) {
+  grid-column: auto;
+  grid-row: auto;
+  aspect-ratio: 2 / 3;
+}
+
 .c-item img {
   width: 100%;
   height: 100%;
@@ -669,6 +680,11 @@ h2 {
   .c-item:nth-child(5n + 3) {
     grid-column: span 1;
     aspect-ratio: 3 / 4;
+  }
+
+  .collage--portraits .c-item:nth-child(n) {
+    grid-column: span 1;
+    aspect-ratio: 2 / 3;
   }
 
   .c-cap {

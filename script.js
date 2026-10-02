@@ -86,7 +86,7 @@ shootingsEl.innerHTML = site.shootings
           ${sh.text ? `<p>${escapeHtml(sh.text)}</p>` : ""}
         </div>
       </header>
-      <div class="collage reveal">
+      <div class="collage${sh.layout ? ` collage--${escapeHtml(sh.layout)}` : ""} reveal">
         ${sh.photos
           .map(
             (p, pi) => `
