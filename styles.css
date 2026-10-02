@@ -592,6 +592,14 @@ h2 {
   border: 1px solid var(--line);
 }
 
+.comp-photos--portraits {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+
+.comp-photos--portraits .comp-photo {
+  aspect-ratio: 3 / 4;
+}
+
 .comp-photo img {
   width: 100%;
   height: 100%;
@@ -1187,7 +1195,8 @@ h2 {
   .comp-year { grid-column: 2; grid-row: 2; font-size: 0.85rem; }
   .comp-name { grid-column: 2; grid-row: 1; font-size: 1.05rem; overflow-wrap: anywhere; hyphens: auto; }
   .comp-div { grid-column: 2; grid-row: 3; font-size: 0.85rem; }
-  .comp-photos { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0.8rem; }
+  .comp-photos,
+  .comp-photos--portraits { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0.8rem; }
   .comp-place { grid-column: 3; grid-row: 1 / span 2; }
 
   .compare {

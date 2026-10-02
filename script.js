@@ -72,7 +72,7 @@ compsEl.innerHTML = site.competitions
       <span class="comp-place">${String(c.place) === "1" ? "🏆 " : ""}Platz ${escapeHtml(c.place)}</span>
       ${
         compPhotos[i].length
-          ? `<div class="comp-photos">${compPhotos[i]
+          ? `<div class="comp-photos${c.layout ? ` comp-photos--${escapeHtml(c.layout)}` : ""}">${compPhotos[i]
               .map(
                 (p, pi) => `
             <button type="button" class="comp-photo" data-comp="${i}" data-index="${pi}" aria-label="${escapeHtml(p.caption)} – vergrößern">

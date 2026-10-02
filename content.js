@@ -107,7 +107,20 @@ window.SITE = {
         { src: "assets/wettkaempfe/2017-studiomeisterschaft/line-up.jpg", caption: "Line-up", focus: "50% 30%" },
       ],
     },
-    { year: "20??", name: "Wettkampf 3", division: "Klasse folgt", place: "?" },
+    {
+      year: "2018",
+      name: "NRW-Meisterschaft",
+      division: "",
+      place: "?",
+      layout: "portraits", // Hochformat-Fotos -> hohe Vorschaukacheln
+      photos: [
+        { src: "assets/wettkaempfe/2018-nrw/lat-spread.jpg", caption: "Lat Spread von vorne · Foto: Oliver Rink / TEAM-ANDRO", focus: "50% 30%" },
+        { src: "assets/wettkaempfe/2018-nrw/vergleich-bauch-beine.jpg", caption: "Vergleich: Bauch-Beine-Pose · Foto: Oliver Rink / TEAM-ANDRO", focus: "50% 25%" },
+        { src: "assets/wettkaempfe/2018-nrw/backstage.webp", caption: "Backstage vor dem Auftritt", focus: "50% 25%" },
+        { src: "assets/wettkaempfe/2018-nrw/beine.jpg", caption: "Beine in der Vorbereitung", focus: "50% 40%" },
+        { src: "assets/wettkaempfe/2018-nrw/vorbereitung.jpg", caption: "Formcheck in der Vorbereitung", focus: "50% 35%" },
+      ],
+    },
     { year: "20??", name: "Wettkampf 4", division: "Klasse folgt", place: "?" },
     { year: "20??", name: "Wettkampf 5", division: "Klasse folgt", place: "?" },
   ],
