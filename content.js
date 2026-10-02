@@ -50,10 +50,10 @@ window.SITE = {
       image: null,
     },
     {
-      year: "20??",
-      title: "Lehrjahre",
-      text: "[Platzhalter] Erst Training, dann verstehen: Ernährung, Regeneration, Trainingsplan. Und die Erkenntnis, dass sechs Mahlzeiten am Tag mehr Arbeit sind als jedes Beintraining.",
-      image: null,
+      year: "2006",
+      title: "Die Anfänge",
+      text: "Weihnachtsdeko im Hintergrund, Double Biceps im Vordergrund: Der Rücken war noch ein Versprechen, der Ehrgeiz schon voll da. Erst Training, dann verstehen – Ernährung, Regeneration, Trainingsplan.",
+      image: "assets/progress/2006/rueckenbizeps.jpg",
     },
     {
       year: "20??",
@@ -84,6 +84,13 @@ window.SITE = {
   // Wettkämpfe – [Platzhalter], bitte Jahr, Name, Klasse und Platzierung eintragen
   // photos (optional): Bilder vom Wettkampf, z. B. aus assets/wettkaempfe/
   competitions: [
+    {
+      year: "2008",
+      name: "Studiomeisterschaft",
+      division: "",
+      place: "1",
+      date: "21.06.2008",
+    },
     {
       year: "2015",
       name: "NRW-Meisterschaft",
@@ -121,14 +128,13 @@ window.SITE = {
         { src: "assets/wettkaempfe/2018-nrw/vorbereitung.jpg", caption: "Formcheck in der Vorbereitung", focus: "50% 35%" },
       ],
     },
-    { year: "20??", name: "Wettkampf 4", division: "Klasse folgt", place: "?" },
     { year: "20??", name: "Wettkampf 5", division: "Klasse folgt", place: "?" },
   ],
 
   // Vorher / Nachher-Vergleich (Schieberegler)
   comparison: {
-    before: { src: null, label: "2004 · 70 kg" },
-    after: { src: null, label: "2026 · 115 kg" },
+    before: { src: "assets/progress/2006/front.jpg", label: "2006" },
+    after: { src: "assets/shootings/2017/kabelzug.jpg", label: "2017" },
   },
 
   // Fotoshootings – werden als Collage angezeigt. Neues Shooting = neuer Block,
@@ -163,13 +169,10 @@ window.SITE = {
   // Progress-Galerie – neueste Bilder ganz oben eintragen.
   // date: "JJJJ-MM"   tag: frei wählbar (z. B. Aufbau, Diät, Wettkampf, Shooting)
   gallery: [
-    { src: null, date: "2026-09", caption: "Topform", tag: "Aufbau" },
-    { src: null, date: "2026-06", caption: "Back Double Biceps", tag: "Aufbau" },
-    { src: null, date: "2025-11", caption: "Side Chest", tag: "Diät" },
-    { src: null, date: "2024-05", caption: "Off-Season", tag: "Aufbau" },
-    { src: null, date: "2020-10", caption: "Bühne", tag: "Wettkampf" },
-    { src: null, date: "2015-04", caption: "Peak Week", tag: "Diät" },
-    { src: null, date: "2010-08", caption: "Masse-Phase", tag: "Aufbau" },
-    { src: null, date: "2004-09", caption: "Tag 1 · 70 kg", tag: "Start" },
+    { src: "assets/shootings/2015/hantelbank-farbe.jpg", date: "2015", caption: "Zwischen den Kurzhanteln", tag: "Shooting" },
+    { src: "assets/progress/2006/front.jpg", date: "2006", caption: "Die Anfänge", tag: "Start" },
+    { src: "assets/progress/2006/rueckenbizeps.jpg", date: "2006", caption: "Double Biceps unterm Weihnachtsbaum", tag: "Start" },
+    { src: "assets/progress/2006/balkon.jpg", date: "2006", caption: "Urlaub – noch ohne Meal-Prep", tag: "Start" },
+    { src: "assets/progress/2006/urlaub.jpg", date: "2006", caption: "Urlaubsmodus", tag: "Start" },
   ],
 };

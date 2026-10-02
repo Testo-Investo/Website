@@ -132,6 +132,12 @@ document.getElementById("compareRange").addEventListener("input", (e) => {
 
 /* ---------- Gallery ---------- */
 const gallery = [...site.gallery].sort((a, b) => b.date.localeCompare(a.date));
+// "Neu"-Badge nur für Fotos der letzten 3 Monate
+const newSince = (() => {
+  const d = new Date();
+  d.setMonth(d.getMonth() - 3);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+})();
 const years = [...new Set(gallery.map((g) => g.date.slice(0, 4)))];
 const galleryEl = document.getElementById("gallery");
 const filtersEl = document.getElementById("filters");
@@ -148,7 +154,7 @@ const renderGallery = () => {
       <button type="button" class="g-item" data-index="${i}" style="animation-delay:${Math.min(i, 8) * 50}ms"
         aria-label="${escapeHtml(g.caption)}, ${formatDate(g.date)} – vergrößern">
         ${media(g.src, g.caption, formatDate(g.date))}
-        ${g === gallery[0] ? '<span class="g-new">Neu</span>' : ""}
+        ${g === gallery[0] && g.date.length > 4 && g.date >= newSince ? '<span class="g-new">Neu</span>' : ""}
         <span class="g-meta">
           <span><strong>${escapeHtml(g.caption)}</strong><small>${formatDate(g.date)}</small></span>
           ${g.tag ? `<span class="g-tag">${escapeHtml(g.tag)}</span>` : ""}

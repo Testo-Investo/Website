@@ -746,8 +746,9 @@ h2 {
 .compare {
   --pos: 50%;
   position: relative;
-  aspect-ratio: 16 / 10;
-  max-height: 80vh;
+  aspect-ratio: 4 / 3;
+  width: min(100%, 1000px);
+  max-height: 85vh;
   margin-inline: auto;
   border-radius: var(--radius);
   overflow: hidden;
@@ -883,6 +884,12 @@ h2 {
   grid-column: span 2;
   grid-row: span 2;
   aspect-ratio: auto;
+}
+
+.g-item > img,
+.g-item > .ph {
+  position: absolute;
+  inset: 0;
 }
 
 @keyframes pop {
