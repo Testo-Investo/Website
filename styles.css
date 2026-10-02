@@ -564,6 +564,19 @@ h2 {
   white-space: nowrap;
 }
 
+.comp-name { grid-column: 3; }
+.comp-place { grid-column: 5; }
+
+.comp--winner {
+  background: linear-gradient(90deg, rgba(255, 178, 31, 0.12), transparent 60%);
+  box-shadow: inset 3px 0 0 var(--accent-2);
+}
+
+.comp--winner .comp-place {
+  background: linear-gradient(120deg, #ffe08a, #ffb21f 50%, #e8920c);
+  box-shadow: 0 0 24px rgba(255, 178, 31, 0.45);
+}
+
 .comp-photos {
   grid-column: 2 / -1;
   display: grid;
@@ -1166,15 +1179,15 @@ h2 {
   }
 
   .comp {
-    grid-template-columns: 3rem 1fr auto;
+    grid-template-columns: 3rem minmax(0, 1fr) auto;
     gap: 0.2rem 1rem;
   }
 
   .comp-no { grid-row: span 2; }
   .comp-year { grid-column: 2; grid-row: 2; font-size: 0.85rem; }
-  .comp-name { grid-column: 2; grid-row: 1; font-size: 1.05rem; }
+  .comp-name { grid-column: 2; grid-row: 1; font-size: 1.05rem; overflow-wrap: anywhere; hyphens: auto; }
   .comp-div { grid-column: 2; grid-row: 3; font-size: 0.85rem; }
-  .comp-photos { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; margin-top: 0.8rem; }
+  .comp-photos { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0.8rem; }
   .comp-place { grid-column: 3; grid-row: 1 / span 2; }
 
   .compare {

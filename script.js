@@ -58,25 +58,25 @@ document.getElementById("timeline").innerHTML = site.timeline
 /* ---------- Competitions ---------- */
 const compsEl = document.getElementById("comps");
 const compPhotos = site.competitions.map((c) =>
-  (c.photos || []).map((p) => ({ ...p, date: c.year, tag: `${c.name} · ${c.division}` }))
+  (c.photos || []).map((p) => ({ ...p, date: c.year, tag: [c.name, c.division].filter(Boolean).join(" · ") }))
 );
 
 compsEl.innerHTML = site.competitions
   .map(
     (c, i) => `
-    <li class="comp reveal" style="transition-delay:${i * 80}ms">
+    <li class="comp${String(c.place) === "1" ? " comp--winner" : ""} reveal" style="transition-delay:${i * 80}ms">
       <span class="comp-no">${String(i + 1).padStart(2, "0")}</span>
       <span class="comp-year">${escapeHtml(c.year)}</span>
       <strong class="comp-name">${escapeHtml(c.name)}</strong>
-      <span class="comp-div">${escapeHtml(c.division)}</span>
-      <span class="comp-place">Platz ${escapeHtml(c.place)}</span>
+      ${c.division ? `<span class="comp-div">${escapeHtml(c.division)}</span>` : ""}
+      <span class="comp-place">${String(c.place) === "1" ? "🏆 " : ""}Platz ${escapeHtml(c.place)}</span>
       ${
         compPhotos[i].length
           ? `<div class="comp-photos">${compPhotos[i]
               .map(
                 (p, pi) => `
             <button type="button" class="comp-photo" data-comp="${i}" data-index="${pi}" aria-label="${escapeHtml(p.caption)} – vergrößern">
-              <img src="${escapeHtml(p.src)}" alt="${escapeHtml(p.caption)}" loading="lazy" decoding="async">
+              <img src="${escapeHtml(p.src)}" alt="${escapeHtml(p.caption)}" loading="lazy" decoding="async"${p.focus ? ` style="object-position:${escapeHtml(p.focus)}"` : ""}>
             </button>`
               )
               .join("")}</div>`
