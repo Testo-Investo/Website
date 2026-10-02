@@ -3,80 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testo-Investo | Finanzielle Bildung & Investment-Beratung</title>
-  <meta name="description" content="Testo-Investo begleitet dich mit klaren Analysen und verständlicher Finanzbildung auf dem Weg zu smarten Investment-Entscheidungen.">
+  <title>Testo · Iron Journey</title>
+  <meta name="description" content="Testo · Iron Journey – 22 Jahre Bodybuilding, von 70 auf 115 kg: Geschichte, Progress-Bilder und Bestleistungen.">
+  <meta name="theme-color" content="#0b0b0d">
+  <link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="navbar">
-      <a href="#top" class="logo">Testo<span>Investo</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
-        <span></span><span></span><span></span>
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="logo">TESTO<span>.</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
       </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#leistungen">Leistungen</a></li>
-        <li><a href="#ueber-uns">Über uns</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
-    </nav>
+      <nav class="nav-links" id="navLinks">
+        <a href="#story">Story</a>
+        <a href="#buehne">Bühne</a>
+        <a href="#shooting">Shooting</a>
+        <a href="#transformation">Transformation</a>
+        <a href="#progress">Progress</a>
+        <a href="#kraft">Zahlen</a>
+        <a href="#kontakt" class="nav-cta">Kontakt</a>
+      </nav>
+    </div>
   </header>
 
   <main id="top">
+    <!-- HERO -->
     <section class="hero">
-      <div class="hero-content">
-        <h1>Fundierte Finanzbildung. Klare Investment-Entscheidungen.</h1>
-        <p>Testo-Investo bringt dir Kapitalmärkte, Anlagestrategien und Risikomanagement verständlich näher – ohne Fachchinesisch.</p>
-        <a href="#kontakt" class="btn-primary">Kostenloses Erstgespräch</a>
+      <div class="hero-media" id="heroMedia"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-content container">
+        <p class="eyebrow reveal">Bodybuilding · seit <span data-bind="startYear"></span></p>
+        <h1 class="hero-title reveal">
+          <span data-bind="name"></span>
+          <span class="outline" data-bind="title"></span>
+        </h1>
+        <p class="hero-tagline reveal" data-bind="tagline"></p>
+        <div class="hero-actions reveal">
+          <a href="#story" class="btn btn-primary">Meine Story</a>
+          <a href="#progress" class="btn btn-ghost">Aktuelle Bilder</a>
+        </div>
+      </div>
+      <div class="stats container" id="stats"></div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Disziplin</span><span>Geduld</span><span>Progressive Overload</span><span>Meal-Prep</span><span>No Days Off</span><span>Iron Journey</span>
+        <span>Disziplin</span><span>Geduld</span><span>Progressive Overload</span><span>Meal-Prep</span><span>No Days Off</span><span>Iron Journey</span>
+      </div>
+    </div>
+
+    <!-- STORY / TIMELINE -->
+    <section class="section container" id="story">
+      <div class="section-head reveal">
+        <p class="eyebrow">01 — Story</p>
+        <h2>22 Jahre gebaut.</h2>
+        <p class="section-lead">Von 70 auf 115 Kilo in 22 Jahren: Jeder Abschnitt hat Spuren hinterlassen – im Spiegel, im Kopf und im Kleiderschrank.</p>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <!-- COMPETITIONS -->
+    <section class="section container" id="buehne">
+      <div class="section-head reveal">
+        <p class="eyebrow">02 — Bühne</p>
+        <h2>Fünf Mal ins Rampenlicht.</h2>
+        <p class="section-lead">Monatelang Hähnchen und Reis, eine Woche Peak Week, drei Minuten Posing. Jeder Start war es wert.</p>
+      </div>
+      <ol class="comps" id="comps"></ol>
+    </section>
+
+    <!-- SHOOTINGS -->
+    <section class="section container" id="shooting">
+      <div class="section-head reveal">
+        <p class="eyebrow">03 — Shooting</p>
+        <h2>Vor der Kamera.</h2>
+        <p class="section-lead">Momentaufnahmen in Bestform – professionell fotografiert, ehrlich erarbeitet.</p>
+      </div>
+      <div id="shootings"></div>
+    </section>
+
+    <!-- BEFORE / AFTER -->
+    <section class="section container" id="transformation">
+      <div class="section-head reveal">
+        <p class="eyebrow">04 — Transformation</p>
+        <h2>Vorher. Nachher.</h2>
+        <p class="section-lead">Zieh den Regler: 2006 gegen 2017 – das sind elf Jahre Konsequenz.</p>
+      </div>
+      <div class="compare reveal" id="compare">
+        <div class="compare-layer compare-after" id="compareAfter"></div>
+        <div class="compare-layer compare-before" id="compareBefore"></div>
+        <div class="compare-handle" id="compareHandle" aria-hidden="true"><span>⟷</span></div>
+        <input class="compare-range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="Vorher-Nachher-Vergleich verschieben">
       </div>
     </section>
 
-    <section id="leistungen" class="section leistungen">
-      <h2>Unsere Leistungen</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Finanzbildung</h3>
-          <p>Grundlagenwissen zu Aktien, ETFs und Anlagestrategien – verständlich aufbereitet für Einsteiger und Fortgeschrittene.</p>
-        </div>
-        <div class="card">
-          <h3>Portfolio-Analyse</h3>
-          <p>Wir werfen einen unabhängigen Blick auf dein bestehendes Portfolio und zeigen Optimierungspotenzial auf.</p>
-        </div>
-        <div class="card">
-          <h3>Individuelle Beratung</h3>
-          <p>Persönliche Gespräche zu deiner Anlagestrategie, abgestimmt auf deine Ziele und dein Risikoprofil.</p>
-        </div>
+    <!-- PROGRESS GALLERY -->
+    <section class="section container" id="progress">
+      <div class="section-head reveal">
+        <p class="eyebrow">05 — Progress</p>
+        <h2>Aktuelle Bilder.</h2>
+        <p class="section-lead">Regelmäßige Updates – die neuesten zuerst.</p>
       </div>
+      <div class="filters reveal" id="filters" role="toolbar" aria-label="Galerie nach Jahr filtern"></div>
+      <div class="gallery" id="gallery"></div>
     </section>
 
-    <section id="ueber-uns" class="section ueber-uns">
-      <h2>Über uns</h2>
-      <p>Testo-Investo wurde gegründet, um Finanzwissen zugänglich zu machen. Wir glauben, dass fundierte Entscheidungen am Kapitalmarkt kein Privileg von Experten sein sollten, sondern jedem offenstehen – mit den richtigen Werkzeugen und verständlichen Erklärungen.</p>
+    <!-- STRENGTH -->
+    <section class="section container" id="kraft">
+      <div class="section-head reveal">
+        <p class="eyebrow">06 — Zahlen</p>
+        <h2>In Zahlen.</h2>
+        <p class="section-lead">Kilos, die Geschichten erzählen. Die Waage lügt nicht – leider auch nicht im Januar.</p>
+      </div>
+      <div class="lifts" id="lifts"></div>
     </section>
 
-    <section id="kontakt" class="section kontakt">
-      <h2>Kontakt</h2>
-      <p>Hast du Fragen oder möchtest ein Gespräch vereinbaren? Schreib uns eine Nachricht.</p>
-      <form id="contactForm" class="contact-form" action="https://formspree.io/skwurst@gmx.de" method="POST">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">E-Mail</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Nachricht</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-
-        <button type="submit" class="btn-primary">Nachricht senden</button>
-        <p id="formStatus" class="form-status" role="status"></p>
-      </form>
+    <!-- CONTACT -->
+    <section class="section container contact reveal" id="kontakt">
+      <p class="eyebrow">07 — Kontakt</p>
+      <h2>Die Reise geht weiter.</h2>
+      <p class="section-lead">Fragen, Kooperationen oder einfach Motivation teilen – schreib mir.</p>
+      <div class="contact-links" id="contactLinks"></div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Testo-Investo. Alle Angaben ohne Gewähr, keine Anlageberatung im rechtlichen Sinne.</p>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="logo">TESTO<span>.</span></span>
+      <p>&copy; <span id="year"></span> Testo · Iron Journey</p>
+      <nav class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="#top">Nach oben ↑</a>
+      </nav>
+    </div>
   </footer>
 
+  <dialog class="lightbox" id="lightbox" aria-label="Bildansicht">
+    <button class="lb-close" id="lbClose" aria-label="Schließen">✕</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Vorheriges Bild">‹</button>
+    <figure>
+      <div class="lb-media" id="lbMedia"></div>
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Nächstes Bild">›</button>
+  </dialog>
+
+  <script src="content.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
