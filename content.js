@@ -207,7 +207,20 @@ window.SITE = {
   // Progress-Galerie – neueste Bilder ganz oben eintragen.
   // date: "JJJJ-MM"   tag: frei wählbar (z. B. Aufbau, Diät, Wettkampf, Shooting)
   gallery: [
-    { src: "assets/progress/2026-diaet/topform.jpg", date: "2026-08", caption: "Topform – 115 kg", tag: "Diät 2026" },
+    // Diät 2026 – sortiert nach Diätfortschritt (Datum JJJJ-MM-TT aus den Fotos)
+    { src: "assets/progress/2026-diaet/13.jpg", date: "2026-09-05", caption: "September: Form gehalten", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/12.jpg", date: "2026-08-27", caption: "Topform, zweiter Blick", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/topform.jpg", date: "2026-08-27", caption: "Topform – 115 kg", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/10.jpg", date: "2026-08-25", caption: "Doppelt hält besser", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/09.jpg", date: "2026-08-25", caption: "Mit Trainingspartner", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/08.jpg", date: "2026-08-18", caption: "Tanktop-Pump", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/07.jpg", date: "2026-08-12", caption: "August: Aufzug, Runde zwei", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/06.jpg", date: "2026-06-15", caption: "Juni: Aufzugs-Selfie", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/05.jpg", date: "2026-05-09", caption: "Mai: die Form kommt", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/04.jpg", date: "2026-05-09", caption: "Mai: Formcheck", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/03.jpg", date: "2026-05-09", caption: "Mai: Spiegel, Ganzkörper", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/02.jpg", date: "2026-04-11", caption: "April: erster Spiegel-Check", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/01.jpg", date: "2026-01", caption: "Diätstart", tag: "Diät 2026" },
     { src: "assets/shootings/2015/hantelbank-farbe.jpg", date: "2015", caption: "Zwischen den Kurzhanteln", tag: "Shooting" },
     { src: "assets/progress/2008-ibiza/front.jpg", date: "2008", caption: "Ibiza – Training statt Strandbar", tag: "Ibiza" },
     { src: "assets/progress/2008-ibiza/arm-hinterm-kopf.jpg", date: "2008", caption: "Bauch-Beine-Pose in der Sonne", tag: "Ibiza" },
