@@ -22,7 +22,7 @@ window.SITE = {
     startYear: 2004,
     heroImage: "assets/shootings/2017/kreuzheben.jpg",
     instagram: "", // z. B. "https://instagram.com/deinname"
-    email: "", // z. B. "kontakt@example.de"
+    email: "testo-investo@protonmail.com",
   },
 
   // Großes Highlight-Foto direkt unter dem Startbereich
@@ -169,11 +169,21 @@ window.SITE = {
     },
   ],
 
-  // Vorher / Nachher-Vergleich (Schieberegler)
-  comparison: {
-    before: { src: "assets/progress/2006/front.jpg", label: "2006" },
-    after: { src: "assets/shootings/2017/kabelzug.jpg", label: "2017" },
-  },
+  // Vorher / Nachher-Vergleiche (Schieberegler) – beliebig viele möglich.
+  // portrait: true für Hochformat-Fotos
+  comparisons: [
+    {
+      title: "2006 → 2017",
+      before: { src: "assets/progress/2006/front.jpg", label: "2006" },
+      after: { src: "assets/shootings/2017/kabelzug.jpg", label: "2017" },
+    },
+    {
+      title: "Diät 2026: Mai → August",
+      portrait: true,
+      before: { src: "assets/progress/2026-diaet/04.jpg", label: "Mai 2026" },
+      after: { src: "assets/progress/2026-diaet/topform.jpg", label: "Aug 2026 · 115 kg" },
+    },
+  ],
 
   // Fotoshootings – werden als Collage angezeigt. Neues Shooting = neuer Block,
   // Fotos in einen eigenen Ordner legen, z. B. assets/shootings/2027/
@@ -211,8 +221,8 @@ window.SITE = {
     { src: "assets/progress/2026-diaet/13.jpg", date: "2026-09-05", caption: "September: Form gehalten", tag: "Diät 2026" },
     { src: "assets/progress/2026-diaet/12.jpg", date: "2026-08-27", caption: "Topform, zweiter Blick", tag: "Diät 2026" },
     { src: "assets/progress/2026-diaet/topform.jpg", date: "2026-08-27", caption: "Topform – 115 kg", tag: "Diät 2026" },
-    { src: "assets/progress/2026-diaet/10.jpg", date: "2026-08-25", caption: "Doppelt hält besser", tag: "Diät 2026" },
-    { src: "assets/progress/2026-diaet/09.jpg", date: "2026-08-25", caption: "Mit Trainingspartner", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/10.jpg", date: "2026-08-25", caption: "Most Muscular im Tanktop", tag: "Diät 2026" },
+    { src: "assets/progress/2026-diaet/09.jpg", date: "2026-08-25", caption: "Spiegel-Pump im Tanktop", tag: "Diät 2026" },
     { src: "assets/progress/2026-diaet/08.jpg", date: "2026-08-18", caption: "Tanktop-Pump", tag: "Diät 2026" },
     { src: "assets/progress/2026-diaet/07.jpg", date: "2026-08-12", caption: "August: Aufzug, Runde zwei", tag: "Diät 2026" },
     { src: "assets/progress/2026-diaet/06.jpg", date: "2026-06-15", caption: "Juni: Aufzugs-Selfie", tag: "Diät 2026" },

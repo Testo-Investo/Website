@@ -830,6 +830,29 @@ h2 {
   user-select: none;
 }
 
+.compares {
+  display: grid;
+  gap: 4rem;
+}
+
+.compare-block {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.compare-title {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.compare--portrait {
+  aspect-ratio: 3 / 4;
+  width: min(100%, 620px, 62vh);
+}
+
 .compare-layer {
   position: absolute;
   inset: 0;

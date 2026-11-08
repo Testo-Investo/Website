@@ -139,15 +139,25 @@ shootingsEl.innerHTML = site.shootings
   .join("");
 
 /* ---------- Before / After ---------- */
-const { before, after } = site.comparison;
-document.getElementById("compareBefore").innerHTML =
-  media(before.src, `Vorher ${before.label}`, "Vorher-Foto") + `<span class="compare-label">${escapeHtml(before.label)}</span>`;
-document.getElementById("compareAfter").innerHTML =
-  media(after.src, `Nachher ${after.label}`, "Nachher-Foto") + `<span class="compare-label">${escapeHtml(after.label)}</span>`;
+const comparesEl = document.getElementById("compares");
+comparesEl.innerHTML = site.comparisons
+  .map(
+    (c) => `
+    <figure class="compare-block reveal">
+      ${c.title ? `<figcaption class="compare-title">${escapeHtml(c.title)}</figcaption>` : ""}
+      <div class="compare${c.portrait ? " compare--portrait" : ""}">
+        <div class="compare-layer compare-after">${media(c.after.src, `Nachher ${c.after.label}`, "Nachher-Foto")}<span class="compare-label">${escapeHtml(c.after.label)}</span></div>
+        <div class="compare-layer compare-before">${media(c.before.src, `Vorher ${c.before.label}`, "Vorher-Foto")}<span class="compare-label">${escapeHtml(c.before.label)}</span></div>
+        <div class="compare-handle" aria-hidden="true"><span>⟷</span></div>
+        <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Vorher-Nachher-Vergleich ${escapeHtml(c.title || "")} verschieben">
+      </div>
+    </figure>`
+  )
+  .join("");
 
-const compare = document.getElementById("compare");
-document.getElementById("compareRange").addEventListener("input", (e) => {
-  compare.style.setProperty("--pos", `${e.target.value}%`);
+comparesEl.addEventListener("input", (e) => {
+  if (!e.target.classList.contains("compare-range")) return;
+  e.target.closest(".compare").style.setProperty("--pos", `${e.target.value}%`);
 });
 
 /* ---------- Gallery ---------- */
@@ -284,7 +294,8 @@ if (site.profile.instagram) {
   links.push(`<a class="btn btn-primary" href="${escapeHtml(site.profile.instagram)}" target="_blank" rel="noopener">Instagram ↗</a>`);
 }
 if (site.profile.email) {
-  links.push(`<a class="btn btn-ghost" href="mailto:${escapeHtml(site.profile.email)}">E-Mail schreiben</a>`);
+  const primary = site.profile.instagram ? "btn-ghost" : "btn-primary";
+  links.push(`<a class="btn ${primary}" href="mailto:${escapeHtml(site.profile.email)}">E-Mail schreiben</a>`);
 }
 document.getElementById("contactLinks").innerHTML =
   links.join("") || `<span class="btn btn-ghost" aria-disabled="true">Links folgen in Kürze</span>`;
