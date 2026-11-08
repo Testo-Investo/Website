@@ -39,6 +39,41 @@ window.SITE = {
     focus: "50% 20%",
   },
 
+  // Über mich: Steckbrief-Kacheln und Detailkarten
+  about: {
+    title: "Der Mann hinter den Kilos.",
+    lead: "Kurz und knapp: wer ich bin, wie ich trainiere und was auf den Teller kommt.",
+    facts: [
+      { value: "40", label: "Jahre alt" },
+      { value: "1,80 m", label: "groß" },
+      { value: "115 kg", label: "Topform 2026" },
+      { value: "5×", label: "Training pro Woche" },
+    ],
+    cards: [
+      {
+        eyebrow: "Training",
+        title: "Klassischer 5er-Split",
+        chips: ["Beine", "Brust", "Rücken", "Schultern", "Arme"],
+        text: "Jede Muskelgruppe bekommt ihren eigenen Tag – plus zwei Tage Pause pro Woche. Gewachsen wird schließlich in der Pause.",
+      },
+      {
+        eyebrow: "Lieblingstraining",
+        title: "Rücken",
+        text: "Eigentlich trainiere ich jede Muskelgruppe gern. Aktueller Favorit ist aber ganz klar Rücken – breit wird man nicht vom Zuschauen.",
+      },
+      {
+        eyebrow: "Ernährung aktuell",
+        value: "4.000–4.500 kcal",
+        text: "Nach der Diät geht's in einen leichten Kalorienüberschuss. Die Kalorien werden Schritt für Schritt erhöht – die Form bleibt dabei immer im Blick.",
+      },
+      {
+        eyebrow: "„Cheatmeal“",
+        title: "Gulasch & Rouladen",
+        text: "Klassische deutsche Küche schlägt jeden Burger. McDonald's gibt's ab und zu auch mal – aber das befriedigt nur kurz, und der große Heißhunger von früher ist weg.",
+      },
+    ],
+  },
+
   // Kennzahlen im Hero-Bereich. "value" muss eine Zahl sein.
   // Trainingseinheiten: 22 Jahre × ~52 Wochen × ~4 Einheiten ≈ 4.500
   stats: [

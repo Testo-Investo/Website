@@ -49,6 +49,30 @@ if (sp && sp.src) {
   spotEl.remove();
 }
 
+/* ---------- Über mich ---------- */
+const about = site.about;
+if (about) {
+  document.getElementById("aboutTitle").textContent = about.title;
+  document.getElementById("aboutLead").textContent = about.lead;
+  document.getElementById("aboutFacts").innerHTML = about.facts
+    .map((f) => `<div class="about-fact reveal"><strong>${escapeHtml(f.value)}</strong><span>${escapeHtml(f.label)}</span></div>`)
+    .join("");
+  document.getElementById("aboutCards").innerHTML = about.cards
+    .map(
+      (c) => `
+      <article class="about-card reveal">
+        <p class="eyebrow">${escapeHtml(c.eyebrow)}</p>
+        ${c.value ? `<div class="about-value">${escapeHtml(c.value)}</div>` : ""}
+        ${c.title ? `<h3>${escapeHtml(c.title)}</h3>` : ""}
+        ${c.chips ? `<ul class="about-chips">${c.chips.map((x) => `<li>${escapeHtml(x)}</li>`).join("")}</ul>` : ""}
+        <p>${escapeHtml(c.text)}</p>
+      </article>`
+    )
+    .join("");
+} else {
+  document.getElementById("ueber-mich").remove();
+}
+
 /* ---------- Stats ---------- */
 document.getElementById("stats").innerHTML = site.stats
   .map(

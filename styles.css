@@ -492,6 +492,98 @@ h2 {
   font-size: 1.08rem;
 }
 
+/* ---------- Über mich ---------- */
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.about-fact {
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+
+.about-fact strong {
+  display: block;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 1;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-fact span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.about-card {
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--card);
+  transition: border-color 0.3s, transform 0.4s var(--ease);
+}
+
+.about-card:hover {
+  border-color: rgba(255, 90, 31, 0.45);
+  transform: translateY(-4px);
+}
+
+.about-card h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  line-height: 1.05;
+  margin: 0.6rem 0 0.8rem;
+}
+
+.about-value {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.05;
+  margin: 0.6rem 0 0.8rem;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-card p:last-child {
+  color: var(--muted);
+}
+
+.about-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-chips li {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 /* ---------- Timeline ---------- */
 .timeline {
   list-style: none;
@@ -1265,6 +1357,14 @@ h2 {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  .about-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+
   .spotlight {
     grid-template-columns: 1fr;
   }
@@ -1330,7 +1430,8 @@ h2 {
   }
 }
 
-@media (max-width: 720px) {
+/* Klapp-Menü schon ab Tablet-Breite, damit die Navigation nie umbricht */
+@media (max-width: 960px) {
   .nav-toggle {
     display: block;
   }
@@ -1363,7 +1464,9 @@ h2 {
     text-align: center;
     border: 0;
   }
+}
 
+@media (max-width: 720px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.6rem;
