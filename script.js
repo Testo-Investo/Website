@@ -17,10 +17,18 @@ const placeholder = (label = "Foto folgt") => `
     <span>${escapeHtml(label)}</span>
   </div>`;
 
-const media = (src, alt, label, eager = false, focus = "") =>
-  src
-    ? `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ${eager ? "" : 'loading="lazy"'} decoding="async"${focus ? ` style="object-position:${escapeHtml(focus)}"` : ""}>`
-    : placeholder(label);
+// Kleine Vorschau-Version eines Fotos (wird mit tools/make_thumbs.py erzeugt): foto.jpg -> foto.thumb.webp
+const thumbOf = (src) => src.replace(/\.(jpe?g|png|webp)$/i, ".thumb.webp");
+
+// <img>-Tag; mit thumb=true wird die Vorschau geladen und bei Fehlen automatisch das Original
+const img = (src, alt, { eager = false, focus = "", thumb = false } = {}) => {
+  const file = thumb ? thumbOf(src) : src;
+  const fallback = thumb ? ` onerror="this.onerror=null;this.src='${escapeHtml(src)}'"` : "";
+  return `<img src="${escapeHtml(file)}" alt="${escapeHtml(alt)}" ${eager ? "" : 'loading="lazy"'} decoding="async"${focus ? ` style="object-position:${escapeHtml(focus)}"` : ""}${fallback}>`;
+};
+
+const media = (src, alt, label, eager = false, focus = "", thumb = false) =>
+  src ? img(src, alt, { eager, focus, thumb }) : placeholder(label);
 
 /* ---------- Profile ---------- */
 document.querySelectorAll("[data-bind]").forEach((el) => {
@@ -49,6 +57,30 @@ if (sp && sp.src) {
   spotEl.remove();
 }
 
+/* ---------- Über mich ---------- */
+const about = site.about;
+if (about) {
+  document.getElementById("aboutTitle").textContent = about.title;
+  document.getElementById("aboutLead").textContent = about.lead;
+  document.getElementById("aboutFacts").innerHTML = about.facts
+    .map((f) => `<div class="about-fact reveal"><strong>${escapeHtml(f.value)}</strong><span>${escapeHtml(f.label)}</span></div>`)
+    .join("");
+  document.getElementById("aboutCards").innerHTML = about.cards
+    .map(
+      (c) => `
+      <article class="about-card reveal">
+        <p class="eyebrow">${escapeHtml(c.eyebrow)}</p>
+        ${c.value ? `<div class="about-value">${escapeHtml(c.value)}</div>` : ""}
+        ${c.title ? `<h3>${escapeHtml(c.title)}</h3>` : ""}
+        ${c.chips ? `<ul class="about-chips">${c.chips.map((x) => `<li>${escapeHtml(x)}</li>`).join("")}</ul>` : ""}
+        <p>${escapeHtml(c.text)}</p>
+      </article>`
+    )
+    .join("");
+} else {
+  document.getElementById("ueber-mich").remove();
+}
+
 /* ---------- Stats ---------- */
 document.getElementById("stats").innerHTML = site.stats
   .map(
@@ -70,13 +102,15 @@ document.getElementById("timeline").innerHTML = site.timeline
         <h3>${escapeHtml(t.title)}</h3>
         <p>${escapeHtml(t.text)}</p>
       </div>
-      ${t.image ? `<div class="tl-media">${media(t.image, `${t.year} – ${t.title}`, "", false, t.focus)}</div>` : ""}
+      ${t.image ? `<div class="tl-media">${media(t.image, `${t.year} – ${t.title}`, "", false, t.focus, true)}</div>` : ""}
     </li>`
   )
   .join("");
 
 /* ---------- Competitions ---------- */
 const compsEl = document.getElementById("comps");
+// Pro Wettkampf höchstens 3 Vorschauen; alle Fotos gibt es in der Großansicht
+const MAX_COMP_THUMBS = 3;
 const compPhotos = site.competitions.map((c) =>
   (c.photos || []).map((p) => ({ ...p, date: c.year, tag: [c.name, c.division].filter(Boolean).join(" · ") }))
 );
@@ -93,12 +127,17 @@ compsEl.innerHTML = site.competitions
       ${
         compPhotos[i].length
           ? `<div class="comp-photos${c.layout ? ` comp-photos--${escapeHtml(c.layout)}` : ""}">${compPhotos[i]
-              .map(
-                (p, pi) => `
-            <button type="button" class="comp-photo" data-comp="${i}" data-index="${pi}" aria-label="${escapeHtml(p.caption)} – vergrößern">
-              <img src="${escapeHtml(p.src)}" alt="${escapeHtml(p.caption)}" loading="lazy" decoding="async"${p.focus ? ` style="object-position:${escapeHtml(p.focus)}"` : ""}>
-            </button>`
-              )
+              .slice(0, MAX_COMP_THUMBS)
+              .map((p, pi, shownList) => {
+                const rest = compPhotos[i].length - shownList.length;
+                const isLast = pi === shownList.length - 1 && rest > 0;
+                return `
+            <button type="button" class="comp-photo" data-comp="${i}" data-index="${pi}"
+              aria-label="${isLast ? `Alle ${compPhotos[i].length} Fotos ansehen` : `${escapeHtml(p.caption)} – vergrößern`}">
+              ${img(p.src, p.caption, { focus: p.focus, thumb: true })}
+              ${isLast ? `<span class="comp-more">+${rest}</span>` : ""}
+            </button>`;
+              })
               .join("")}</div>`
           : ""
       }
@@ -128,7 +167,7 @@ shootingsEl.innerHTML = site.shootings
           .map(
             (p, pi) => `
           <button type="button" class="c-item" data-shoot="${si}" data-index="${pi}" aria-label="${escapeHtml(p.caption)} – vergrößern">
-            <img src="${escapeHtml(p.src)}" alt="${escapeHtml(p.caption)}" loading="lazy" decoding="async"${p.focus ? ` style="object-position:${escapeHtml(p.focus)}"` : ""}>
+            ${img(p.src, p.caption, { focus: p.focus, thumb: true })}
             <span class="c-cap">${escapeHtml(p.caption)}</span>
           </button>`
           )
@@ -177,22 +216,45 @@ filtersEl.innerHTML = ["Alle", ...years]
   .map((y, i) => `<button type="button" class="chip" data-year="${y}" aria-pressed="${i === 0}">${y}</button>`)
   .join("");
 
-const renderGallery = () => {
-  galleryEl.innerHTML = visible
-    .map(
-      (g, i) => `
-      <button type="button" class="g-item" data-index="${i}" style="animation-delay:${Math.min(i, 8) * 50}ms"
+// Anfangs 9 Bilder (großes erstes + 8 kleine = volle Reihen), dann je 8 weitere
+const FIRST_PAGE = 9;
+const NEXT_PAGE = 8;
+const moreBtn = document.getElementById("galleryMore");
+let shown = 0;
+
+const galleryItem = (g, i, delay) => `
+      <button type="button" class="g-item" data-index="${i}" style="animation-delay:${Math.min(delay, 8) * 50}ms"
         aria-label="${escapeHtml(g.caption)}, ${formatDate(g.date)} – vergrößern">
-        ${media(g.src, g.caption, formatDate(g.date))}
+        ${media(g.src, g.caption, formatDate(g.date), false, "", true)}
         ${g === gallery[0] && g.date.length > 4 && g.date >= newSince ? '<span class="g-new">Neu</span>' : ""}
         <span class="g-meta">
           <span><strong>${escapeHtml(g.caption)}</strong><small>${formatDate(g.date)}</small></span>
           ${g.tag ? `<span class="g-tag">${escapeHtml(g.tag)}</span>` : ""}
         </span>
-      </button>`
-    )
-    .join("");
+      </button>`;
+
+const updateMoreBtn = () => {
+  const rest = visible.length - shown;
+  moreBtn.hidden = rest <= 0;
+  moreBtn.textContent = `Mehr anzeigen (${rest} weitere)`;
 };
+
+// Zeigt Bilder bis "upTo" an; append=true hängt nur die neuen an (ohne die alten neu zu animieren)
+const renderGallery = (upTo, append = false) => {
+  const start = append ? shown : 0;
+  const end = Math.min(upTo, visible.length);
+  const html = visible.slice(start, end).map((g, k) => galleryItem(g, start + k, k)).join("");
+  if (append) galleryEl.insertAdjacentHTML("beforeend", html);
+  else galleryEl.innerHTML = html;
+  shown = end;
+  updateMoreBtn();
+};
+
+moreBtn.addEventListener("click", () => {
+  const firstNew = shown;
+  renderGallery(shown + NEXT_PAGE, true);
+  galleryEl.querySelector(`[data-index="${firstNew}"]`)?.focus({ preventScroll: true });
+});
 
 filtersEl.addEventListener("click", (e) => {
   const chip = e.target.closest(".chip");
@@ -200,10 +262,10 @@ filtersEl.addEventListener("click", (e) => {
   filtersEl.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c === chip));
   const year = chip.dataset.year;
   visible = year === "Alle" ? gallery : gallery.filter((g) => g.date.startsWith(year));
-  renderGallery();
+  renderGallery(FIRST_PAGE);
 });
 
-renderGallery();
+renderGallery(FIRST_PAGE);
 
 /* ---------- Lightbox ---------- */
 const lightbox = document.getElementById("lightbox");
