@@ -29,6 +29,26 @@ document.querySelectorAll("[data-bind]").forEach((el) => {
 document.getElementById("heroMedia").innerHTML = media(site.profile.heroImage, `${site.profile.name} – Hero`, "", true);
 document.getElementById("year").textContent = new Date().getFullYear();
 
+/* ---------- Spotlight ---------- */
+const spotEl = document.getElementById("topform");
+const sp = site.spotlight;
+if (sp && sp.src) {
+  spotEl.innerHTML = `
+    <button type="button" class="spot-media reveal" aria-label="${escapeHtml(sp.caption)} – vergrößern">
+      <img src="${escapeHtml(sp.src)}" alt="${escapeHtml(sp.caption)}" loading="lazy" decoding="async"${sp.focus ? ` style="object-position:${escapeHtml(sp.focus)}"` : ""}>
+      ${sp.date ? `<span class="spot-date">${escapeHtml(sp.date)}</span>` : ""}
+    </button>
+    <div class="spot-text reveal">
+      <p class="eyebrow">${escapeHtml(sp.eyebrow)}</p>
+      <div class="spot-value">${Number(sp.value)}<small>${escapeHtml(sp.unit)}</small></div>
+      <h2>${escapeHtml(sp.title)}</h2>
+      <p class="section-lead">${escapeHtml(sp.text)}</p>
+      <a href="#story" class="btn btn-ghost">Wie es dazu kam ↓</a>
+    </div>`;
+} else {
+  spotEl.remove();
+}
+
 /* ---------- Stats ---------- */
 document.getElementById("stats").innerHTML = site.stats
   .map(
@@ -184,6 +204,9 @@ let lbList = [];
 
 const showImage = (index) => {
   current = (index + lbList.length) % lbList.length;
+  const single = lbList.length < 2;
+  document.getElementById("lbPrev").hidden = single;
+  document.getElementById("lbNext").hidden = single;
   const g = lbList[current];
   lbMedia.innerHTML = media(g.src, g.caption, "Foto folgt", true);
   lbCaption.innerHTML = `<strong>${escapeHtml(g.caption)}</strong> · ${formatDate(g.date)}${g.tag ? ` · ${escapeHtml(g.tag)}` : ""}`;
@@ -202,6 +225,13 @@ compsEl.addEventListener("click", (e) => {
   if (!item) return;
   lbList = compPhotos[Number(item.dataset.comp)];
   showImage(Number(item.dataset.index));
+  lightbox.showModal();
+});
+
+spotEl.addEventListener("click", (e) => {
+  if (!e.target.closest(".spot-media")) return;
+  lbList = [{ src: sp.full || sp.src, caption: sp.caption, date: sp.date.slice(-4), tag: sp.eyebrow }];
+  showImage(0);
   lightbox.showModal();
 });
 

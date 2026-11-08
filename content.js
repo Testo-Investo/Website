@@ -25,6 +25,20 @@ window.SITE = {
     email: "", // z. B. "kontakt@example.de"
   },
 
+  // Großes Highlight-Foto direkt unter dem Startbereich
+  spotlight: {
+    src: "assets/progress/2026-diaet/topform-spotlight.jpg", // enger Ausschnitt fürs große Bild
+    full: "assets/progress/2026-diaet/topform.jpg", // komplettes Foto für die Großansicht
+    date: "27.08.2026",
+    eyebrow: "Topform 2026",
+    value: 115,
+    unit: "kg",
+    title: "Die beste Form meines Lebens.",
+    text: "Januar 2026: Diätstart mit 133 Kilo. Acht Monate später: 115 Kilo, trocken wie Knäckebrot und breiter als die Kabinentür. 22 Jahre Eisen – und es wird immer noch besser.",
+    caption: "Topform – 115 kg",
+    focus: "50% 20%",
+  },
+
   // Kennzahlen im Hero-Bereich. "value" muss eine Zahl sein.
   // Trainingseinheiten: 22 Jahre × ~52 Wochen × ~4 Einheiten ≈ 4.500
   stats: [
@@ -96,7 +110,8 @@ window.SITE = {
       year: "2026",
       title: "Von 133 auf 115 Kilo",
       text: "Januar 2026: Diätstart mit 133 Kilo, Ziel Sommerform. Ergebnis: 115 Kilo und die beste Form meines Lebens. 18 Kilo runter, kein Gramm Ehrgeiz verloren – und die Reise ist noch lange nicht vorbei.",
-      image: null,
+      image: "assets/progress/2026-diaet/topform.jpg",
+      focus: "50% 22%",
     },
   ],
 
@@ -192,6 +207,7 @@ window.SITE = {
   // Progress-Galerie – neueste Bilder ganz oben eintragen.
   // date: "JJJJ-MM"   tag: frei wählbar (z. B. Aufbau, Diät, Wettkampf, Shooting)
   gallery: [
+    { src: "assets/progress/2026-diaet/topform.jpg", date: "2026-08", caption: "Topform – 115 kg", tag: "Diät 2026" },
     { src: "assets/shootings/2015/hantelbank-farbe.jpg", date: "2015", caption: "Zwischen den Kurzhanteln", tag: "Shooting" },
     { src: "assets/progress/2008-ibiza/front.jpg", date: "2008", caption: "Ibiza – Training statt Strandbar", tag: "Ibiza" },
     { src: "assets/progress/2008-ibiza/arm-hinterm-kopf.jpg", date: "2008", caption: "Bauch-Beine-Pose in der Sonne", tag: "Ibiza" },
