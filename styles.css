@@ -766,6 +766,26 @@ h2 {
   aspect-ratio: 3 / 4;
 }
 
+.comp-photo {
+  position: relative;
+}
+
+.comp-more {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(11, 11, 13, 0.62);
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--text);
+  transition: background 0.3s;
+}
+
+.comp-photo:hover .comp-more {
+  background: rgba(11, 11, 13, 0.45);
+}
+
 .comp-photo img {
   width: 100%;
   height: 100%;
@@ -1145,6 +1165,16 @@ h2 {
   text-transform: uppercase;
 }
 
+.gallery-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.gallery-more .btn[hidden] {
+  display: none;
+}
+
 /* ---------- Lifts ---------- */
 .lifts {
   display: grid;
@@ -1422,7 +1452,9 @@ h2 {
   .comp-name { grid-column: 2; grid-row: 1; font-size: 1.05rem; overflow-wrap: anywhere; hyphens: auto; }
   .comp-div { grid-column: 2; grid-row: 3; font-size: 0.85rem; }
   .comp-photos,
-  .comp-photos--portraits { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0.8rem; }
+  .comp-photos--portraits { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.4rem; margin-top: 0.8rem; }
+  .comp-photos .comp-photo,
+  .comp-photos--portraits .comp-photo { aspect-ratio: 1 / 1; border-radius: 10px; }
   .comp-place { grid-column: 3; grid-row: 1 / span 2; }
 
   .compare {

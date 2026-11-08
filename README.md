@@ -20,6 +20,19 @@ Alle Texte, Zahlen und Bilder stehen in **`content.js`**. HTML musst du nicht an
 
 Einträge mit `src: null` werden als Platzhalter angezeigt.
 
+### Vorschaubilder (schnelle Ladezeit)
+
+Kacheln und Vorschauen laden eine verkleinerte Version `<foto>.thumb.webp`
+(max. 900 px), die Großansicht das Original. Nach dem Hinzufügen neuer Fotos:
+
+```bash
+pip install pillow
+python3 tools/make_thumbs.py .
+```
+
+Fehlt eine Vorschau, lädt die Seite automatisch das Original – es geht also
+nichts kaputt, die Seite ist dann nur etwas langsamer.
+
 ### Neues Fotoshooting
 
 1. Ordner anlegen, z. B. `assets/shootings/2027/`, Fotos hineinlegen.
