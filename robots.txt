@@ -1,0 +1,8 @@
+# Hinweis: Suchmaschinen lesen robots.txt nur im Hauptverzeichnis einer Domain.
+# Unter testo-investo.github.io/Website/ wird diese Datei daher erst mit einer
+# eigenen Domain wirksam. Die Sitemap kann bis dahin direkt in der Google Search
+# Console eingereicht werden.
+User-agent: *
+Allow: /
+
+Sitemap: https://testo-investo.github.io/Website/sitemap.xml

@@ -28,6 +28,10 @@
   <meta property="og:image:alt" content="Testo in Topform 2026 – Bodybuilding seit 2004, 70 auf 115 kg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/shootings/2017/kreuzheben-1400.webp" fetchpriority="high"
+    imagesrcset="assets/shootings/2017/kreuzheben-800.webp 800w, assets/shootings/2017/kreuzheben-1400.webp 1400w, assets/shootings/2017/kreuzheben-2000.webp 2000w"
+    imagesizes="(min-width: 901px) 66vw, 134svh">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -54,21 +58,32 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-media" id="heroMedia"></div>
+      <!-- Titelbild direkt im HTML, damit es sofort lädt (Größen: tools/hero-Varianten -800/-1400/-2000.webp) -->
+      <div class="hero-media" id="heroMedia">
+        <img src="assets/shootings/2017/kreuzheben-1400.webp"
+          srcset="assets/shootings/2017/kreuzheben-800.webp 800w, assets/shootings/2017/kreuzheben-1400.webp 1400w, assets/shootings/2017/kreuzheben-2000.webp 2000w"
+          sizes="(min-width: 901px) 66vw, 134svh" alt="Testo beim Kreuzheben" fetchpriority="high" decoding="async">
+      </div>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-content container">
-        <p class="eyebrow reveal">Bodybuilding · seit <span data-bind="startYear"></span></p>
-        <h1 class="hero-title reveal">
-          <span data-bind="name"></span>
-          <span class="outline" data-bind="title"></span>
+        <p class="eyebrow hero-in">Bodybuilding · seit <span data-bind="startYear">2004</span></p>
+        <h1 class="hero-title hero-in">
+          <span data-bind="name">Testo</span>
+          <span class="outline" data-bind="title">Iron Journey</span>
         </h1>
-        <p class="hero-tagline reveal" data-bind="tagline"></p>
-        <div class="hero-actions reveal">
+        <p class="hero-tagline hero-in" data-bind="tagline">22 Jahre. 45 Kilo mehr. Null Abkürzungen – nur Eisen, Reis mit Hähnchen und eine Engelsgeduld.</p>
+        <div class="hero-actions hero-in">
           <a href="#story" class="btn btn-primary">Meine Story</a>
           <a href="#progress" class="btn btn-ghost">Aktuelle Bilder</a>
         </div>
       </div>
-      <div class="stats container" id="stats"></div>
+      <!-- Wird von script.js aus content.js neu gefüllt; steht hier vorab, damit es sofort sichtbar ist -->
+      <div class="stats container" id="stats">
+        <div class="stat"><strong>22</strong><span>Jahre am Eisen</span></div>
+        <div class="stat"><strong>45 kg</strong><span>aufgebaut (70 → 115 kg)</span></div>
+        <div class="stat"><strong>4.500+</strong><span>Trainingseinheiten</span></div>
+        <div class="stat"><strong>4</strong><span>Wettkämpfe</span></div>
+      </div>
     </section>
 
     <!-- MARQUEE -->

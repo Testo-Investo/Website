@@ -49,6 +49,15 @@ keine Cookies/Tracking nutzt und die Schriften lokal lädt (`assets/fonts/`).
 Kommen Kontaktformular, Statistik-Tool, eingebettete Instagram-Posts o. Ä. dazu,
 muss sie angepasst werden.
 
+## Eigene Domain – Checkliste
+
+Beim Umzug von `testo-investo.github.io/Website/` auf eine eigene Domain anpassen:
+
+- `index.html`: `canonical`, `og:url`, `og:image` (Adresse der Seite)
+- `sitemap.xml` und `robots.txt`: Adresse
+- `404.html`: `<base href="/Website/">` → `<base href="/">`
+- In GitHub unter Settings → Pages die Domain eintragen (legt eine `CNAME`-Datei an)
+
 ## Lokal ansehen
 
 ```bash
