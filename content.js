@@ -20,7 +20,7 @@ window.SITE = {
     title: "Iron Journey",
     tagline: "22 Jahre. 45 Kilo mehr. Null Abkürzungen – nur Eisen, Reis mit Hähnchen und eine Engelsgeduld.",
     startYear: 2004,
-    heroImage: "assets/shootings/2017/kreuzheben.jpg",
+    heroImage: "assets/shootings/2017/kreuzheben.jpg", // Hinweis: das Titelbild steht zusätzlich direkt in index.html (schnelleres Laden)
     instagram: "", // z. B. "https://instagram.com/deinname"
     email: "testo-investo@protonmail.com",
   },
@@ -80,7 +80,7 @@ window.SITE = {
     { value: 22, suffix: "", label: "Jahre am Eisen" },
     { value: 45, suffix: " kg", label: "aufgebaut (70 → 115 kg)" },
     { value: 4500, suffix: "+", label: "Trainingseinheiten" },
-    { value: 5, suffix: "", label: "Wettkämpfe" },
+    { value: 4, suffix: "", label: "Wettkämpfe" },
   ],
 
   // Körpergewicht: Start und heute

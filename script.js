@@ -34,7 +34,9 @@ const media = (src, alt, label, eager = false, focus = "", thumb = false) =>
 document.querySelectorAll("[data-bind]").forEach((el) => {
   el.textContent = site.profile[el.dataset.bind] ?? "";
 });
-document.getElementById("heroMedia").innerHTML = media(site.profile.heroImage, `${site.profile.name} – Hero`, "", true);
+// Titelbild steht für schnelles Laden schon in index.html; nur ersetzen, falls dort keins ist
+const heroMedia = document.getElementById("heroMedia");
+if (!heroMedia.querySelector("img")) heroMedia.innerHTML = media(site.profile.heroImage, `${site.profile.name} – Hero`, "", true);
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /* ---------- Spotlight ---------- */
@@ -42,8 +44,8 @@ const spotEl = document.getElementById("topform");
 const sp = site.spotlight;
 if (sp && sp.src) {
   spotEl.innerHTML = `
-    <button type="button" class="spot-media reveal" aria-label="${escapeHtml(sp.caption)} – vergrößern">
-      <img src="${escapeHtml(sp.src)}" alt="${escapeHtml(sp.caption)}" loading="lazy" decoding="async"${sp.focus ? ` style="object-position:${escapeHtml(sp.focus)}"` : ""}>
+    <button type="button" class="spot-media reveal" aria-label="${escapeHtml(sp.caption)}, ${escapeHtml(sp.date)} – vergrößern">
+      <img src="${escapeHtml(sp.src)}" alt="" loading="lazy" decoding="async"${sp.focus ? ` style="object-position:${escapeHtml(sp.focus)}"` : ""}>
       ${sp.date ? `<span class="spot-date">${escapeHtml(sp.date)}</span>` : ""}
     </button>
     <div class="spot-text reveal">
@@ -133,8 +135,8 @@ compsEl.innerHTML = site.competitions
                 const isLast = pi === shownList.length - 1 && rest > 0;
                 return `
             <button type="button" class="comp-photo" data-comp="${i}" data-index="${pi}"
-              aria-label="${isLast ? `Alle ${compPhotos[i].length} Fotos ansehen` : `${escapeHtml(p.caption)} – vergrößern`}">
-              ${img(p.src, p.caption, { focus: p.focus, thumb: true })}
+              aria-label="${isLast ? `+${rest} – alle ${compPhotos[i].length} Fotos ansehen` : `${escapeHtml(p.caption)} – vergrößern`}">
+              ${img(p.src, "", { focus: p.focus, thumb: true })}
               ${isLast ? `<span class="comp-more">+${rest}</span>` : ""}
             </button>`;
               })
@@ -166,9 +168,9 @@ shootingsEl.innerHTML = site.shootings
         ${sh.photos
           .map(
             (p, pi) => `
-          <button type="button" class="c-item" data-shoot="${si}" data-index="${pi}" aria-label="${escapeHtml(p.caption)} – vergrößern">
-            ${img(p.src, p.caption, { focus: p.focus, thumb: true })}
-            <span class="c-cap">${escapeHtml(p.caption)}</span>
+          <button type="button" class="c-item" data-shoot="${si}" data-index="${pi}">
+            ${img(p.src, "", { focus: p.focus, thumb: true })}
+            <span class="c-cap">${escapeHtml(p.caption)}<span class="sr-only"> – vergrößern</span></span>
           </button>`
           )
           .join("")}
@@ -223,12 +225,11 @@ const moreBtn = document.getElementById("galleryMore");
 let shown = 0;
 
 const galleryItem = (g, i, delay) => `
-      <button type="button" class="g-item" data-index="${i}" style="animation-delay:${Math.min(delay, 8) * 50}ms"
-        aria-label="${escapeHtml(g.caption)}, ${formatDate(g.date)} – vergrößern">
-        ${media(g.src, g.caption, formatDate(g.date), false, "", true)}
+      <button type="button" class="g-item" data-index="${i}" style="animation-delay:${Math.min(delay, 8) * 50}ms">
+        ${media(g.src, "", formatDate(g.date), false, "", true)}
         ${g === gallery[0] && g.date.length > 4 && g.date >= newSince ? '<span class="g-new">Neu</span>' : ""}
         <span class="g-meta">
-          <span><strong>${escapeHtml(g.caption)}</strong><small>${formatDate(g.date)}</small></span>
+          <span><strong>${escapeHtml(g.caption)}</strong><small>${formatDate(g.date)}</small><span class="sr-only"> – vergrößern</span></span>
           ${g.tag ? `<span class="g-tag">${escapeHtml(g.tag)}</span>` : ""}
         </span>
       </button>`;
